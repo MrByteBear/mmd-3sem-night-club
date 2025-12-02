@@ -4,6 +4,7 @@ import "./globals.css";
 const ubuntuSans = Ubuntu({
   variable: "--font-ubuntu-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata = {
@@ -14,11 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${ubuntuSans.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${ubuntuSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }
