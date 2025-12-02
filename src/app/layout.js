@@ -3,6 +3,7 @@ import "./globals.css";
 
 const ubuntuSans = Ubuntu({
   variable: "--font-ubuntu-sans",
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
 });
 

@@ -2,8 +2,8 @@
 
 :root {
   --background: #000000;
-  --foreground: #FFFFFF;
-  --accent: #FF2A70;
+  --foreground: #ffffff;
+  --accent: #ff2a70;
 
   --content-w-desktop: 1440px;
   --content-w-mobile: 352px;
@@ -23,28 +23,28 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #000000;
-    --foreground: #FFFFFF;
-    --accent: #FF2A70;
+    --foreground: #ffffff;
+    --accent: #ff2a70;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-ubuntu-sans), sans-serif;
-}
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-ubuntu-sans), sans-serif;
+  }
 
-main {
-  /* @apply ...; Tailwind way of pre-adding classes  */
-  /* Main will have the classes: display: grid; grid-template-columns: var(--grid-col-desktop); min-height: 100dvh; */
-  /* On Mobile, using "max-md:" which applies a media query at max 768 px width */
-  /* (Mobile Breakpoint) I apply min-height: 100svh; and grid-template-columns: var(--grid-col-mobile); */
-  @apply grid grid-cols-(--grid-col-desktop) max-md:grid-cols-(--grid-col-mobile) min-h-dvh max-md:min-h-svh;
+  main {
+    /* @apply ...; Tailwind way of pre-adding classes  */
+    /* Main will have the classes: display: grid; grid-template-columns: var(--grid-col-desktop); min-height: 100dvh; */
+    /* On Mobile, using "max-md:" which applies a media query at max 768 px width */
+    /* (Mobile Breakpoint) I apply min-height: 100svh; and grid-template-columns: var(--grid-col-mobile); */
+    @apply grid min-h-dvh grid-cols-(--grid-col-desktop) max-md:min-h-svh max-md:grid-cols-(--grid-col-mobile);
 
-  > * {
-    /* All direct descendants gets placed in the minmax column. */
-    @apply col-start-2 col-end-auto;
+    > * {
+      /* All direct descendants gets placed in the minmax column. */
+      @apply col-start-2 col-end-auto;
+    }
   }
 }
-
-
