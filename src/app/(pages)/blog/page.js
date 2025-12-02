@@ -12,14 +12,18 @@ export default function Home() {
       >
         <ul className="">
           <li className="bg-background pb-8">
-            <img src="https://cataas.com/cat" alt="" />
-            <h2 className="text-2xl font-medium tracking-[0.48px] uppercase">
+            <img
+              src="https://cataas.com/cat"
+              alt=""
+              className="mb-4 h-[221px] w-full object-cover"
+            />
+            <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
               More than 20 years of night club
             </h2>
-            <p className="text-accent font-medium tracking-[0.36px] uppercase">
+            <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
               BY: Admin / 3 Comments / 16 Nov 2018
             </p>
-            <p className="text-[16px] leading-6 font-medium tracking-[0.32px]">
+            <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin
@@ -30,23 +34,26 @@ export default function Home() {
             </p>
             {/* btn */}
             <div className="flex items-center justify-center pt-6">
-              <div className="inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 border-white px-4 py-5">
-                <div className="justify-start font-['Ubuntu'] text-lg font-medium tracking-tight text-white uppercase">
+              <div className="border-foreground inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 px-4 py-5">
+                <div className="justify-start text-lg font-medium tracking-tight uppercase">
                   Read more
                 </div>
               </div>
             </div>
           </li>
-          {/* just for the visuals */}
           <li className="bg-background pb-8">
-            <img src="https://cataas.com/cat" alt="" />
-            <h2 className="text-2xl font-medium tracking-[0.48px] uppercase">
+            <img
+              src="https://cataas.com/cat"
+              alt=""
+              className="mb-4 h-[221px] w-full object-cover"
+            />
+            <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
               More than 20 years of night club
             </h2>
-            <p className="text-accent font-medium tracking-[0.36px] uppercase">
+            <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
               BY: Admin / 3 Comments / 16 Nov 2018
             </p>
-            <p className="text-[16px] leading-6 font-medium tracking-[0.32px]">
+            <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin
@@ -56,24 +63,27 @@ export default function Home() {
               literature, discovered the undoubtable source.
             </p>
             {/* btn */}
-            <div className="flex items-center justify-center pt-6">
+            <a className="flex items-center justify-center pt-6" href="#">
               <div className="inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 border-white px-4 py-5">
                 <div className="justify-start font-['Ubuntu'] text-lg font-medium tracking-tight text-white uppercase">
                   Read more
                 </div>
               </div>
-            </div>
+            </a>
           </li>
-          {/* just for the visuals */}
           <li className="bg-background pb-8">
-            <img src="https://cataas.com/cat" alt="" />
-            <h2 className="text-2xl font-medium tracking-[0.48px] uppercase">
+            <img
+              src="https://cataas.com/cat"
+              alt=""
+              className="mb-4 h-[221px] w-full object-cover"
+            />
+            <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
               More than 20 years of night club
             </h2>
-            <p className="text-accent font-medium tracking-[0.36px] uppercase">
+            <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
               BY: Admin / 3 Comments / 16 Nov 2018
             </p>
-            <p className="text-[16px] leading-6 font-medium tracking-[0.32px]">
+            <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin
