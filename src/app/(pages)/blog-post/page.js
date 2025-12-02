@@ -123,22 +123,26 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="border-foreground text-foreground w-full border px-4 py-2"
+                  className="border-foreground text-foreground placeholder:text-foreground w-full border px-3 py-[18px] md:px-6 md:py-8"
                 />
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="border-foreground text-foreground w-full border px-4 py-2"
+                  className="border-foreground text-foreground placeholder:text-foreground w-full border px-3 py-[18px] md:px-6 md:py-8"
                 />
               </div>
               <textarea
                 placeholder="Your Comment"
-                className="border-foreground text-foreground h-32 min-h-80 w-full border px-4 py-2"
+                className="border-foreground text-foreground placeholder:text-foreground h-32 min-h-80 w-full border px-3 py-[18px] md:px-6 md:py-8"
               ></textarea>
             </div>
             {/* submit button */}
-            <div className="mt-4">
-              <button type="submit">Submit Comment</button>
+            <div className="mt-4 flex justify-end">
+              <div className="inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 border-white px-4 py-5">
+                <div className="justify-start font-['Ubuntu'] text-lg font-medium tracking-tight text-white uppercase">
+                  Read more
+                </div>
+              </div>
             </div>
           </form>
         </section>
