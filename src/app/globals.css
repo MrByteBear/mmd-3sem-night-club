@@ -12,9 +12,11 @@
 }
 
 @theme inline {
+  /* For colors: example usage = text-foreground (for color) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  /* For font: use "font-sans" for font-family. */
   --font-sans: var(--font-ubuntu-sans);
 }
 
@@ -33,9 +35,14 @@ body {
 }
 
 main {
+  /* @apply ...; Tailwind way of pre-adding classes  */
+  /* Main will have the classes: display: grid; grid-template-columns: var(--grid-col-desktop); min-height: 100dvh; */
+  /* On Mobile, using "max-md:" which applies a media query at max 768 px width */
+  /* (Mobile Breakpoint) I apply min-height: 100svh; and grid-template-columns: var(--grid-col-mobile); */
   @apply grid grid-cols-(--grid-col-desktop) max-md:grid-cols-(--grid-col-mobile) min-h-dvh max-md:min-h-svh;
 
   > * {
+    /* All direct descendants gets placed in the minmax column. */
     @apply col-start-2 col-end-auto;
   }
 }
