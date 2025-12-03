@@ -36,7 +36,7 @@ const FetchPosts = async () => {
             alt={post.title}
             width={1170}
             height={221}
-            // somehow only way to get images from localhost to work, however it breaks optimization
+            // somehow only way to get images from localhost to work, however it breaks optimization which is the whole point of next/image
             unoptimized={true}
             className="mb-4 h-[221px] w-full object-cover"
           />
@@ -72,5 +72,4 @@ export default BlogList;
 
 // todos:
 // - restrict content preview length (about 450 chars (with spaces))
-// - format date properly
 // - breakout pictures
