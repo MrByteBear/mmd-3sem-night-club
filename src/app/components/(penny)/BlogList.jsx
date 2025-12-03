@@ -29,7 +29,7 @@ const FetchPosts = async () => {
       return (
         <li
           key={post.id}
-          className="bg-background pb-8 md:grid md:grid-cols-2 md:even:bg-red-400"
+          className="bg-background pb-8 md:flex md:grid-flow-row md:gap-x-10 md:even:flex-row-reverse"
         >
           <Image
             src={post.asset.url}
@@ -38,10 +38,10 @@ const FetchPosts = async () => {
             height={221}
             // somehow only way to get images from localhost to work, however it breaks optimization which is the whole point of next/image
             unoptimized={true}
-            className="mb-4 h-[221px] w-full object-cover"
+            className="mb-4 h-[221px] w-full object-cover "
           />
 
-          <div className="order-2 md:even:order-1">
+          <div className="max-w-[683px]">
             <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
               {post.title}
             </h2>
