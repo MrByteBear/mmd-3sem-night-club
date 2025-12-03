@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Tables from "@/app/components/(Meleese)/Tables";
 import BookingForm from "@/app/components/(Meleese)/BookingForm";
+import SubHeader from "@/app/components/(Meleese)/SubHeader";
 
 
 const TABLES = [ 
@@ -29,6 +30,7 @@ export default function TablesPage() {
 
   return (
     <main>
+    <SubHeader title="Book Table" />
       <section className="py-16 space-y-10">
         <Tables
           tables={TABLES}
