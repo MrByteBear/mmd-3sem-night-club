@@ -1,52 +1,33 @@
-export default function Home() {
+import Image from "next/image";
+const BlogPost = async ({ params }) => {
+  const { id } = await params;
+  const response = await fetch(`http://localhost:4000/blogposts/${id}`);
+  const post = await response.json();
+
   return (
     <div>
       {/* subpage hero */}
       <main>
-        <img
-          src="https://cataas.com/cat"
-          alt=""
+        <Image
+          src={post.asset.url}
+          alt={post.title}
+          width={1170}
+          height={221}
+          // somehow only way to get images from localhost to work
+          unoptimized={true}
           className="mb-4 h-[221px] w-full object-cover"
         />
+
         <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
-          More than 20 years of night club
+          {post.title}
         </h2>
         <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
-          BY: Admin / 3 Comments / 16 Nov 2018
+          BY: {post.author} / 3 Comments / 16 Nov 2018
         </p>
         <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px] md:text-[18px]">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is therefore always free
-          from repetition, injected humour, or non-characteristic words etc.
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structure.
+          {post.content}
         </p>
-        <p className="text-[16px] leading-6 font-medium tracking-[0.32px] md:pt-11">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
-        </p>
+
         {/* comments */}
         <section className="mt-[86px]">
           <h2 className="mb-11 pl-3 text-[32px] font-bold uppercase">
@@ -149,4 +130,5 @@ export default function Home() {
       </main>
     </div>
   );
-}
+};
+export default BlogPost;
