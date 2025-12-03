@@ -10,8 +10,8 @@ export default function Home() {
         className="bg-cover bg-center"
         style={{ backgroundImage: `url(${patternBg.src})` }}
       >
-        <BlogList />
-       
+        <BlogList  />
+
         <PageNav />
       </main>
     </div>
