@@ -2,6 +2,7 @@ import Image from "next/image";
 import BlogPostComments from "@/app/components/(penny)/BlogPostComments";
 import patternBg from "@/app/assets/bg/pattern_bg.jpg";
 import React from "react";
+import CommentForm from "@/app/components/(penny)/CommentForm";
 
 const BlogPost = async ({ params }) => {
   const { id } = await params;
@@ -40,6 +41,7 @@ const BlogPost = async ({ params }) => {
         </p>
 
         <BlogPostComments id={id} commentCount={commentCount} />
+        <CommentForm id={id} />
       </main>
     </div>
   );
