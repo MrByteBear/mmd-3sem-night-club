@@ -5,7 +5,7 @@ import { Suspense } from "react";
 const BlogList = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ul>
+      <ul className="col-start-1 col-end-4">
         <FetchPosts />
       </ul>
     </Suspense>
@@ -29,19 +29,19 @@ const FetchPosts = async () => {
       return (
         <li
           key={post.id}
-          className="bg-background pb-8 md:flex md:grid-flow-row md:gap-x-10 md:even:flex-row-reverse"
+          className="bg-background md:even:grid-row-reverse grid-cols-2 pb-8 md:grid md:pb-0 md:[&:nth-child(even)>:first-child]:order-2"
         >
           <Image
             src={post.asset.url}
             alt={post.title}
-            width={1170}
-            height={221}
+            width={960}
+            height={530}
             // somehow only way to get images from localhost to work, however it breaks optimization which is the whole point of next/image
             unoptimized={true}
-            className="mb-4 h-[221px] w-full object-cover"
+            className="mb-4 h-[221px] w-full object-cover md:mb-0 md:h-full md:max-h-[530px]"
           />
 
-          <div className="max-w-[683px]">
+          <div className="md:pt-12 md:pl-10">
             <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
               {post.title}
             </h2>
@@ -50,9 +50,9 @@ const FetchPosts = async () => {
             </p>
             <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
               {/* substring works at short range, but not at long range. */}
-              {post.content.substring(0, 400)}
+              {post.content.substring(0, 450)}
             </p>
-            <div className="flex items-center justify-center pt-6">
+            <div className="flex items-center justify-center pt-6 md:justify-end">
               <Link
                 href={`/blog-post/${post.id}`}
                 className="border-foreground hover:bg-foreground hover:text-background inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 px-4 py-5 transition-colors duration-300"
