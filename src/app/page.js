@@ -4,6 +4,7 @@ import Image from "next/image";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
+import Subscribe from "./components/(Meleese)/Subscribe";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
 import BottomLine from "@/app/assets/bottom_line.png";
@@ -31,6 +32,7 @@ export default function Home() {
       </HeaderNav>
       <main style={{ backgroundImage: `url(${MainBg.src})`}}>
         <SectionElem title="Welcome in nightclub"></SectionElem>
+        <Subscribe />
       </main>
       <FooterBox />
     </>
