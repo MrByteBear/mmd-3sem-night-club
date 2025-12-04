@@ -6,7 +6,6 @@ import SubHeader from "@/app/components/(Meleese)/SubHeader";
 export default function Home() {
   return (
     <div>
-      {/* subpage hero */}
       <HeaderNav />
       <SubHeader title="Blog" />
 

@@ -38,7 +38,7 @@ const FetchPosts = async () => {
             height={221}
             // somehow only way to get images from localhost to work, however it breaks optimization which is the whole point of next/image
             unoptimized={true}
-            className="mb-4 h-[221px] w-full object-cover "
+            className="mb-4 h-[221px] w-full object-cover"
           />
 
           <div className="max-w-[683px]">
@@ -49,7 +49,8 @@ const FetchPosts = async () => {
               BY: {post.author} / {commentCount} comments / 16 Nov 2018
             </p>
             <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
-              {post.content}
+              {/* substring works at short range, but not at long range. */}
+              {post.content.substring(0, 400)}
             </p>
             <div className="flex items-center justify-center pt-6">
               <Link
