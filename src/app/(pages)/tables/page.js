@@ -4,6 +4,8 @@ import { useState } from "react";
 import Tables from "@/app/components/(Meleese)/Tables";
 import BookingForm from "@/app/components/(Meleese)/BookingForm";
 import SubHeader from "@/app/components/(Meleese)/SubHeader";
+import HeaderNav from "@/app/components/(Bjorn)/header-elem/HeaderNav";
+import FooterBox from "@/app/components/(Bjorn)/footer-elem/FooterBox";
 
 
 const TABLES = [ 
@@ -28,7 +30,8 @@ const TABLES = [
 export default function TablesPage() {
   const [selectedTable, setSelectedTable] = useState(null);
 
-  return (
+  return ( <div>
+    <HeaderNav/>
     <main>
     <SubHeader title="Book Table" />
       <section className="py-16 space-y-10">
@@ -40,5 +43,7 @@ export default function TablesPage() {
         <BookingForm selectedTable={selectedTable} />
       </section>
     </main>
+    <FooterBox />
+    </div>
   );
 }
