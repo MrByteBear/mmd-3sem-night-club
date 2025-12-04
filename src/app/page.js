@@ -4,11 +4,16 @@ import Image from "next/image";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
+import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
 import BottomLine from "@/app/assets/bottom_line.png";
 import LogoSvg from "@/app/assets/icon/BetterLogo.svg";
 import MainBg from "@/app/assets/bg/pattern_bg.jpg";
+import IntroImg1 from "@/app/assets/content-img/thumb1.jpg";
+import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
+import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
+import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
 
 export default function Home() {
   return (
@@ -30,7 +35,16 @@ export default function Home() {
         </div>
       </HeaderNav>
       <main style={{ backgroundImage: `url(${MainBg.src})`}}>
-        <SectionElem title="Welcome in nightclub"></SectionElem>
+        <SectionElem title="Welcome in nightclub" className="py-28">
+          <div className="flex gap-8 mt-8 max-lg:flex-wrap max-lg:justify-center">
+            <Image src={IntroImg1} alt="Restaurant"/>
+            <Image src={IntroImg2} alt="Restaurant Dishes"/>
+            <Image src={IntroImg3} alt="Bar"/>
+          </div>
+        </SectionElem>
+        <SectionElem title="Events of the month" variant="breakout" className="bg-cover bg-center py-16" backgroundImage={SliderBg.src}>
+          <SlidingGallery />
+        </SectionElem>
       </main>
       <FooterBox />
     </>
