@@ -1,32 +1,75 @@
+import Link from "next/link";
+import Image from "next/image";
+import { Suspense } from "react";
+
 const BlogList = () => {
   return (
-    <ul>
-      <li>
-        <img src="https://cataas.com/cat" alt="" />
-        <h2 className="text-2xl uppercase">More than 20 years of night club</h2>
-        <p className="text-accent uppercase">
-          BY: Admin / 3 Comments / 16 Nov 2018
-        </p>
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source.
-        </p>
-        {/* btn */}
-        <div className="flex items-center justify-center pt-6">
-          <div className="inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 border-white px-4 py-5">
-            <div className="justify-start font-['Ubuntu'] text-lg font-medium tracking-tight text-white uppercase">
-              Read more
+    <Suspense fallback={<div>Loading...</div>}>
+      <ul>
+        <FetchPosts />
+      </ul>
+    </Suspense>
+  );
+};
+
+const FetchPosts = async () => {
+  const url = "http://localhost:4000/blogposts";
+  const response = await fetch(url);
+  const posts = await response.json();
+
+  return Promise.all(
+    posts.map(async (post) => {
+      // Fetch comments to get count for each post
+      const commentsResponse = await fetch(
+        `http://localhost:4000/comments?blogpostId=${post.id}`,
+      );
+      const comments = await commentsResponse.json();
+      const commentCount = Array.isArray(comments) ? comments.length : 0;
+
+      return (
+        <li
+          key={post.id}
+          className="bg-background pb-8 md:flex md:grid-flow-row md:gap-x-10 md:even:flex-row-reverse"
+        >
+          <Image
+            src={post.asset.url}
+            alt={post.title}
+            width={1170}
+            height={221}
+            // somehow only way to get images from localhost to work, however it breaks optimization which is the whole point of next/image
+            unoptimized={true}
+            className="mb-4 h-[221px] w-full object-cover "
+          />
+
+          <div className="max-w-[683px]">
+            <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
+              {post.title}
+            </h2>
+            <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
+              BY: {post.author} / {commentCount} comments / 16 Nov 2018
+            </p>
+            <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
+              {post.content}
+            </p>
+            <div className="flex items-center justify-center pt-6">
+              <Link
+                href={`/blog-post/${post.id}`}
+                className="border-foreground hover:bg-foreground hover:text-background inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 px-4 py-5 transition-colors duration-300"
+              >
+                <p className="justify-start text-lg font-medium tracking-tight uppercase">
+                  Read more
+                </p>
+              </Link>
             </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      );
+    }),
   );
 };
 
 export default BlogList;
+
+// todos:
+// - restrict content preview length (about 450 chars (with spaces))
+// - breakout pictures
