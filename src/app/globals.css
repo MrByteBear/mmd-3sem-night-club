@@ -2,6 +2,7 @@
 
 :root {
   --background: #000000;
+  --background-alpha: color-mix(in srgb, var(--background) 90%, transparent);
   --foreground: #ffffff;
   --accent: #ff2a70;
 
@@ -9,22 +10,48 @@
   --content-w-mobile: 352px;
   --grid-col-desktop: 1fr minmax(0, var(--content-w-desktop)) 1fr;
   --grid-col-mobile: 1fr minmax(0, var(--content-w-mobile)) 1fr;
+
+  --letter-spacing-s: 2%;
+  --letter-spacing-m: 7.5%;
 }
 
 @theme inline {
   /* For colors: example usage = text-foreground (for color) */
   --color-background: var(--background);
+  --color-background-alpha: var(--background-alpha);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   /* For font: use "font-sans" for font-family. */
   --font-sans: var(--font-ubuntu-sans);
+  /* For text */
+  --tracking-2pct: var(--letter-spacing-s);
+  --tracking-7pct: var(--letter-spacing-m);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #000000;
+    --background-alpha: color-mix(in srgb, var(--background) 90%, transparent);
     --foreground: #ffffff;
     --accent: #ff2a70;
+  }
+}
+
+@layer components {
+  .bottomLine-l {
+    --custom-gradient: linear-gradient(90deg, rgba(217, 217, 217, 0.00) 0%, var(--accent) 50.94%, rgba(217, 217, 217, 0.00) 99.99%);
+    @apply [background-image:var(--custom-gradient)] w-60 h-0.5
+  }
+  .bottomLine-s {
+    background-image: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 0%, transparent) 0%, var(--color-accent) 50%, color-mix(in srgb, var(--color-accent) 0%, transparent) 100%);
+    @apply bg-linear-to-r from-transparent via-50% via-accent to-transparent w-12 h-0.5
+  }
+  .popoverClosed {
+      @apply max-lg:invisible max-lg:pointer-events-none max-lg:opacity-0 max-lg:transition-[opacity,translate] max-lg:transition-discrete max-lg:duration-600 max-lg:fixed max-lg:inset-0 max-lg:w-screen max-lg:h-screen max-lg:backdrop-blur-sm max-lg:m-0 max-lg:-translate-y-full;
+  }
+  
+  .popoverOpen {
+    @apply max-lg:z-50 max-lg:visible max-lg:pointer-events-auto max-lg:grid max-lg:place-content-center max-lg:opacity-100 max-lg:translate-y-0;
   }
 }
 
