@@ -10,6 +10,7 @@ import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
 import BottomLine from "@/app/assets/bottom_line.png";
 import LogoSvg from "@/app/assets/icon/BetterLogo.svg";
 import MainBg from "@/app/assets/bg/pattern_bg.jpg";
+import VideoPlayer from "./components/(Meleese)/VideoPlayer";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       </HeaderNav>
       <main style={{ backgroundImage: `url(${MainBg.src})`}}>
         <SectionElem title="Welcome in nightclub"></SectionElem>
+        <SectionElem title="Latest Videos"><VideoPlayer/></SectionElem>
         <Subscribe />
       </main>
       <FooterBox />
