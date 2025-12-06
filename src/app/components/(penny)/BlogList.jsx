@@ -1,24 +1,37 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Suspense } from "react";
+import Paginator from "./Paginator";
 
-const BlogList = () => {
+// Fetch all posts once
+const url = "http://localhost:4000/blogposts";
+const response = await fetch(url);
+let posts = await response.json();
+const pageSize = 3;
+const totalPages = Math.ceil(posts.length / pageSize);
+
+const BlogList = async ({ searchParams }) => {
+  const currentPage = Number(searchParams?.page) || 1;
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       <ul className="col-start-1 col-end-4">
-        <FetchPosts />
+        <FetchPosts page={currentPage} />
       </ul>
-    </Suspense>
+
+      <div className="flex w-full justify-center py-8">
+        <ul className="flex w-[120px] justify-around">
+          <Paginator totalPages={totalPages} />
+        </ul>
+      </div>
+    </>
   );
 };
 
-const FetchPosts = async () => {
-  const url = "http://localhost:4000/blogposts";
-  const response = await fetch(url);
-  const posts = await response.json();
+const FetchPosts = async ({ page }) => {
+  const paginatedPosts = posts.slice((page - 1) * pageSize, page * pageSize);
 
   return Promise.all(
-    posts.map(async (post) => {
+    paginatedPosts.map(async (post) => {
       // Fetch comments to get count for each post
       const commentsResponse = await fetch(
         `http://localhost:4000/comments?blogpostId=${post.id}`,
@@ -43,7 +56,7 @@ const FetchPosts = async () => {
 
           <div className="md:pt-12 md:pl-10">
             <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
-              {post.title}
+              {post.title} {post.id}
             </h2>
             <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
               BY: {post.author} / {commentCount} comments / 16 Nov 2018
@@ -72,5 +85,4 @@ const FetchPosts = async () => {
 export default BlogList;
 
 // todos:
-// - restrict content preview length (about 450 chars (with spaces))
-// - breakout pictures
+// - inline text
