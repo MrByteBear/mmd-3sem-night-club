@@ -53,6 +53,9 @@
   .popoverOpen {
     @apply max-lg:z-50 max-lg:visible max-lg:pointer-events-auto max-lg:grid max-lg:place-content-center max-lg:opacity-100 max-lg:translate-y-0;
   }
+  .noScrollbar {
+    scrollbar-width: none;
+  }
 }
 
 @layer base {
