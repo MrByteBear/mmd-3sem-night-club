@@ -13,10 +13,10 @@ return (
   );
 }
 
-export default ComponentName() {
+export default function ComponentName() {
   return (
     <DataFetcherClient endpoint="/path"> (for example "/events")
-      {(whateverParam) => <MyFunction myData={whateverParam}>}
+      {(whateverParam) => <MyFunction myData={whateverParam}/>}
     </DataFetcherClient>
   );
 }
