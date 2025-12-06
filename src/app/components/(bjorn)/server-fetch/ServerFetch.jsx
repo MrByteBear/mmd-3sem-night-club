@@ -1,6 +1,27 @@
 "use server";
 import { Suspense } from 'react';
 
+// Usage:
+/*
+import DataFetcherSSR from "@/app/components/(bjorn)/server-fetch/ServerFetch";
+
+function MyFunction({myData}) {
+
+return (
+  <>
+  </>
+  );
+}
+
+export default function ComponentName() {
+  return (
+    <DataFetcherSSR endpoint="/path"> (for example "/events")
+      {(whateverParam) => <MyFunction myData={whateverParam}/>}
+    </DataFetcherSSR>
+  );
+}
+*/
+
 // Similar to ClientFetch.jsx, but slightly less "complicated".
 // async function (because we are fetching) like in ClientFetch.jsx
 
