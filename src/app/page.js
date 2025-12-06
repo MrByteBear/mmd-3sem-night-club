@@ -5,6 +5,7 @@ import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
+import Subscribe from "./components/(Meleese)/Subscribe";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
 import BottomLine from "@/app/assets/bottom_line.png";
@@ -14,6 +15,7 @@ import IntroImg1 from "@/app/assets/content-img/thumb1.jpg";
 import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
 import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
 import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
+import VideoPlayer from "./components/(Meleese)/VideoPlayer";
 
 export default function Home() {
   return (
@@ -45,6 +47,9 @@ export default function Home() {
         <SectionElem title="Events of the month" variant="breakout" className="bg-cover bg-center py-16" backgroundImage={SliderBg.src}>
           <SlidingGallery />
         </SectionElem>
+        <SectionElem title="Welcome in nightclub"></SectionElem>
+        <SectionElem title="Latest Videos"><VideoPlayer/></SectionElem>
+        <Subscribe />
       </main>
       <FooterBox />
     </>

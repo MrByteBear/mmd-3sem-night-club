@@ -1,4 +1,4 @@
-
+import { motion } from "motion/react"
 
 export default function Tables({ tables, selectedTable, onSelect }) {
   return (
@@ -8,12 +8,14 @@ export default function Tables({ tables, selectedTable, onSelect }) {
         const imgSrc = `/table/table_${table.type}.png`;
 
         return (
-          <button
+            // using Framer Motion to animate the hover animation
+          <motion.button
             key={table.id}
             type="button"
             // on click, call onSelect with the table id in
             onClick={() => onSelect(table.id)}
             className="relative"
+            whileHover={{ scale: 1.05 }}
           >
             <img
             // show the correct table image based on type in page.js
@@ -22,7 +24,8 @@ export default function Tables({ tables, selectedTable, onSelect }) {
               className={`transition ${
                 // if the table is selected (if it has an id), set opacity to 100, else 80
                 selectedTable === table.id ? "opacity-100" : "opacity-80"
-              }`}
+            }`}
+            
             />
 
             <span
@@ -33,7 +36,7 @@ export default function Tables({ tables, selectedTable, onSelect }) {
             >
               {table.id}
             </span>
-          </button>
+          </motion.button>
         );
       })}
     </div>
