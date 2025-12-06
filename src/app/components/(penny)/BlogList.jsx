@@ -56,7 +56,7 @@ const FetchPosts = async ({ page }) => {
 
           <div className="md:pt-12 md:pl-10">
             <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
-              {post.title} {post.id}
+              {post.title}
             </h2>
             <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
               BY: {post.author} / {commentCount} comments / 16 Nov 2018
