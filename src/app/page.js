@@ -5,6 +5,7 @@ import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
+import ClubGallery from "@/app/components/(bjorn)/club-gallery/ClubGallery";
 import Subscribe from "./components/(Meleese)/Subscribe";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
@@ -47,7 +48,9 @@ export default function Home() {
         <SectionElem title="Events of the month" variant="breakout" className="bg-cover bg-center py-16" backgroundImage={SliderBg.src}>
           <SlidingGallery />
         </SectionElem>
-        <SectionElem title="Welcome in nightclub"></SectionElem>
+        <SectionElem title="Night club gallery" variant="breakoutAlt" className="my-12">
+          <ClubGallery displayFull={true}/>
+        </SectionElem>
         <SectionElem title="Latest Videos"><VideoPlayer/></SectionElem>
         <Subscribe />
       </main>

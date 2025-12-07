@@ -9,6 +9,8 @@ export default function SectionElem({
     default: "grid place-items-center px-6",
     breakout:
       "col-span-full grid grid-cols-subgrid place-items-center *:col-start-2",
+    breakoutAlt:
+      "col-span-full grid grid-cols-subgrid place-items-center *:first:col-start-2"
   };
 
   return (
@@ -20,8 +22,8 @@ export default function SectionElem({
           : undefined
       }
     >
-      <div className="relative mb-16">
-        <h1 className="tracking-7pct pb-4 text-4xl font-medium uppercase">
+      <div className="relative mb-16 max-md:text-center">
+        <h1 className="tracking-7pct pb-4 text-4xl font-medium uppercase max-md:text-3xl">
           {title}
         </h1>
         <span
