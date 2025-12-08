@@ -1,5 +1,6 @@
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import FooterBox from "./components/(Bjorn)/footer-elem/FooterBox";
 
 const ubuntuSans = Ubuntu({
   variable: "--font-ubuntu-sans",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         className={`${ubuntuSans.variable} antialiased`}
       >
         {children}
+        <FooterBox />
       </body>
     </html>
   );

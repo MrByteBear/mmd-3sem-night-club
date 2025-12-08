@@ -15,7 +15,7 @@ export default function Contact() {
         <ContactForm />
       </div>
     </main>
-    <FooterBox />
+    {/* <FooterBox /> */}
     </div>
   );
 }

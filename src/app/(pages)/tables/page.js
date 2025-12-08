@@ -43,7 +43,7 @@ export default function TablesPage() {
         <BookingForm selectedTable={selectedTable} />
       </section>
     </main>
-    <FooterBox />
+    {/* <FooterBox /> */}
     </div>
   );
 }

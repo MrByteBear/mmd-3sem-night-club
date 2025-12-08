@@ -54,7 +54,7 @@ export default function Home() {
         <SectionElem title="Latest Videos"><VideoPlayer/></SectionElem>
         <Subscribe />
       </main>
-      <FooterBox />
+      {/* <FooterBox /> */}
     </>
   );
 }
