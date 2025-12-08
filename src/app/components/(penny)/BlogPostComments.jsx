@@ -26,20 +26,30 @@ const FetchComments = async ({ id }) => {
     return <div>No comments yet</div>;
   }
 
-  return comments.map((post) => (
-    <li key={post.id} className="mb-[54px] pb-8">
-      <h3 className="mb-6 text-[18px] font-medium tracking-[0.36px]">
-        {post.name} -
-        <span className="text-accent text-[16px] tracking-[0.32px]">
-          {" "}
-          {post.date}
-        </span>
-      </h3>
-      <p className="text-[16px] font-medium tracking-[0.32px]">
-        {post.content}
-      </p>
-    </li>
-  ));
+  return comments.map((post) => {
+    const formattedDate = new Date(post.date)
+      .toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+      .toLowerCase();
+
+    return (
+      <li key={post.id} className="mb-[54px] pb-8">
+        <h3 className="mb-6 text-[18px] font-medium tracking-[0.36px]">
+          {post.name} -
+          <span className="text-accent text-[16px] tracking-[0.32px]">
+            {" "}
+            {formattedDate}
+          </span>
+        </h3>
+        <p className="text-[16px] font-medium tracking-[0.32px]">
+          {post.content}
+        </p>
+      </li>
+    );
+  });
 };
 
 export default BlogPostComments;
