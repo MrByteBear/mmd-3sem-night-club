@@ -27,13 +27,11 @@ const FetchComments = async ({ id }) => {
   }
 
   return comments.map((post) => {
-    const formattedDate = new Date(post.date)
-      .toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-      .toLowerCase();
+    const formattedDate = new Date(post.date).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
 
     return (
       <li key={post.id} className="mb-[54px] pb-8">
