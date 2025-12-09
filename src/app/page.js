@@ -6,6 +6,7 @@ import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
 import ClubGallery from "@/app/components/(bjorn)/club-gallery/ClubGallery";
+import MusicPlayer from "@/app/components/(bjorn)/music-player/MusicPlayer";
 import Subscribe from "./components/(Meleese)/Subscribe";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
@@ -50,6 +51,9 @@ export default function Home() {
         </SectionElem>
         <SectionElem title="Night club gallery" variant="breakoutAlt" className="my-12">
           <ClubGallery displayFull={true}/>
+        </SectionElem>
+        <SectionElem title="Night club track" className="my-12">
+          <MusicPlayer/>
         </SectionElem>
         <SectionElem title="Latest Videos"><VideoPlayer/></SectionElem>
         <Subscribe />
