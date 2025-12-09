@@ -1,60 +1,139 @@
 "use client";
 
+import { useState } from "react";
+
 const CommentForm = ({ id }) => {
-  const handleSubmit = async (e) => {
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+
+  const baseInput =
+    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
+
+
+    const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccess(false);
+
     const formData = new FormData(e.target);
+    const newErrors = {};
+
+    const name = formData.get("name")?.toString().trim() ?? "";
+    const email = formData.get("email")?.toString().trim() ?? "";
+    const content = formData.get("comment")?.toString().trim() ?? "";
+
+    // validation
+    if (!name) newErrors.name = "Please enter your name";
+    if (!email) newErrors.email = "Please enter your email";
+    else if (!/^\S+@\S+\.\S+$/.test(email))
+      newErrors.email = "Please enter a valid email address";
+
+    if (!content) newErrors.comment = "Please write a comment";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+
     const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      content: formData.get("comment"),
+      name,
+      email,
+      content,
       blogpostId: id,
       date: new Date().toISOString(),
     };
 
-    console.log("Posting comment for blog post ID:", id);
+    try {
+      console.log("Posting comment for blog post ID:", id);
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
+      const response = await fetch(
+        "http://localhost:4000/comments?content-Type=application/json",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
 
-    const response = await fetch(
-      "http://localhost:4000/comments?content-Type=application/json",
-      options,
-    );
+      if (!response.ok) {
+        setErrors({
+          form:
+            "Something went wrong while sending your comment. Please try again.",
+        });
+        return;
+      }
+
+      e.target.reset();
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (err) {
+      setErrors({
+        form: "Network error. Please try again later.",
+      });
+    } 
   };
 
+
   return (
-    <>
+    <div>
       <h2 className="mt-[86px] mb-11 text-[32px] font-bold uppercase">
         Leave a comment
       </h2>
       <form onSubmit={handleSubmit}>
-        <div className="mt-8 flex flex-col gap-4 md:gap-6">
+        <div className="mt-8 mb-8 flex flex-col gap-4 md:gap-6">
           <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-6">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="border-foreground text-foreground placeholder:text-foreground w-full border px-3 py-[18px] md:px-6 md:py-8"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              className="border-foreground text-foreground placeholder:text-foreground w-full border px-3 py-[18px] md:px-6 md:py-8"
-            />
+            <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name*"
+                  className={`${baseInput} ${
+                    errors.name ? "border-red-500" : "border-foreground"
+                  }`}
+                />
+                {errors.name && (
+                  <p className="mt-1 text-xs text-red-400">{errors.name}</p>
+                )}
+              </div>
+
+           <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email*"
+                className={`${baseInput} ${
+                  errors.email ? "border-red-500" : "border-foreground"
+                }`}
+              />
+              {errors.email && (
+                <p className="mt-1 text-xs text-red-400">{errors.email}</p>
+              )}
+            </div>
           </div>
-          <textarea
-            name="comment"
-            placeholder="Your Comment"
-            className="border-foreground text-foreground placeholder:text-foreground h-32 min-h-80 w-full border px-3 py-[18px] md:px-6 md:py-8"
-          ></textarea>
-        </div>
+
+          <div>
+              <textarea
+                name="comment"
+                placeholder="Your Comment*"
+                className={`${baseInput} h-32 min-h-80 ${
+                  errors.comment ? "border-red-500" : "border-foreground"
+                }`}
+              />
+              {errors.comment && (
+                <p className="mt-1 text-xs text-red-400">{errors.comment}</p>
+              )}
+          </div>
+
+          {errors.form && (
+            <p className="mt-3 text-sm text-red-400">{errors.form}</p>
+          )}
+
+          {success && (
+            <p className="mt-3 text-sm text-green-400">
+              Your comment has been submitted! 🎉
+            </p>
+          )}
 
         <div className="mt-4 flex justify-end">
           <button
@@ -66,8 +145,9 @@ const CommentForm = ({ id }) => {
             </div>
           </button>
         </div>
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 

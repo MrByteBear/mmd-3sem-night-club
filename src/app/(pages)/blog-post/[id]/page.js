@@ -31,7 +31,7 @@ const BlogPost = async ({ params }) => {
           height={221}
           // somehow only way to get images from localhost to work
           unoptimized
-          className="mb-4 h-[221px] w-full object-cover"
+          className="mb-4 mt-20 h-[221px] w-full object-cover"
         />
 
         <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
