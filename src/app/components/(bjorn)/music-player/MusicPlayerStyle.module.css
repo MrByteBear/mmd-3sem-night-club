@@ -1,0 +1,11 @@
+@reference "../../../globals.css";
+
+@layer components {
+  .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+    @apply size-6 appearance-none bg-foreground border-0 rounded-full cursor-pointer;
+  }
+
+  .slider::-webkit-slider-runnable-track, .slider::-moz-range-track {
+    @apply bg-accent appearance-none;
+  }
+}
