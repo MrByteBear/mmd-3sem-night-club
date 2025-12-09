@@ -77,4 +77,10 @@
       @apply col-start-2 col-end-auto;
     }
   }
+/* Added to allow full bleed on images in blog post, can be moved to components if you find it confusing here */
+  .full-bleed {
+  @apply w-screen relative left-1/2 right-1/2 -ml-[50vw] mr-[50vw];
+}
+
+
 }
