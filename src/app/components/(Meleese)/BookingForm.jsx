@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DatePicker from "@/app/components/(Meleese)/DatePicker";
+import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
 
 
 export default function BookingForm({ selectedTable }) {
@@ -158,16 +159,18 @@ export default function BookingForm({ selectedTable }) {
             placeholder="Your Comment"
           />
         </div>
+
+        <SubmitButton />
         
 
-        <div className="md:col-span-2 flex justify-end">
+        {/* <div className="md:col-span-2 flex justify-end">
           <button
             type="submit"
             className="px-10 py-3 text-sm font-semibold tracking-wide uppercase border-t-4 border-b-4 hover:bg-pink-600 hover:text-black transition"
             >
             Reserve
           </button>
-        </div>
+        </div> */}
               {success && (
               <p className="text-white text-sm font-medium  md:col-span-2 flex justify-end">
                 Your booking has been sent! 🎉

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
 
 const CommentForm = ({ id }) => {
   const [errors, setErrors] = useState({});
@@ -134,8 +135,8 @@ const CommentForm = ({ id }) => {
               Your comment has been submitted! 🎉
             </p>
           )}
-
-        <div className="mt-4 flex justify-end">
+          <SubmitButton />
+        {/* <div className="mt-4 flex justify-end">
           <button
             type="submit"
             className="inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 border-white px-4 py-5"
@@ -144,7 +145,7 @@ const CommentForm = ({ id }) => {
               Submit
             </div>
           </button>
-        </div>
+        </div> */}
         </div>
       </form>
     </div>

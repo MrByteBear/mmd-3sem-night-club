@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Paginator from "./Paginator";
+import ReadMore from "@/app/components/(Meleese)/buttons/ReadMore";
 
 // Fetch all posts once
 const url = "http://localhost:4000/blogposts";
@@ -68,11 +69,8 @@ const FetchPosts = async ({ page }) => {
             <div className="flex items-center justify-center pt-6 md:justify-end">
               <Link
                 href={`/blog-post/${post.id}`}
-                className="border-foreground hover:bg-foreground hover:text-background inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 px-4 py-5 transition-colors duration-300"
-              >
-                <p className="justify-start text-lg font-medium tracking-tight uppercase">
-                  Read more
-                </p>
+                >
+                <ReadMore />
               </Link>
             </div>
           </div>
