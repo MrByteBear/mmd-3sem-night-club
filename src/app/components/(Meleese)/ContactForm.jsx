@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
 
 const ContactForm = () => {
   const [errors, setErrors] = useState({});
@@ -70,6 +71,8 @@ const ContactForm = () => {
         placeholder="Your Comment" 
         />
 
+        <SubmitButton />
+{/* 
         <div className="md:col-span-2 flex justify-end">
           <button
             type="submit"
@@ -77,7 +80,7 @@ const ContactForm = () => {
           >
             Send
           </button>
-        </div>
+        </div> */}
           </form>
 
     </div>  
