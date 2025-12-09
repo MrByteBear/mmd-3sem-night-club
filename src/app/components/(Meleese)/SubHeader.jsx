@@ -1,7 +1,7 @@
 export default function SubHeader({ title }) {
   return (
     <div
-      className="relative w-full bg-center bg-cover py-16 flex flex-col items-center text-white col-start-1 col-end-4"
+      className="relative w-full bg-center bg-cover py-16 flex flex-col items-center text-white col-start-1 col-end-4 mb-20"
       style={{
         backgroundImage: "url('/sub_header/footerbg.jpg')",
       }}

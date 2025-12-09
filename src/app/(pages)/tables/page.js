@@ -34,7 +34,7 @@ export default function TablesPage() {
     <HeaderNav/>
     <main>
     <SubHeader title="Book Table" />
-      <section className="py-16 space-y-10">
+      <section>
         <Tables
           tables={TABLES}
           selectedTable={selectedTable}

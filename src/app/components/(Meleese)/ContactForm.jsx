@@ -37,7 +37,7 @@ const ContactForm = () => {
     "bg-transparent border px-4 py-3 text-sm  outline-red-400 w-full";
 
     return ( 
-    <div className="mt-12">
+    <div>
         <form className="flex flex-col gap-4 max-w-md m-auto" onSubmit={handleSubmit}>
        <div>
           <input
