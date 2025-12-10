@@ -10,7 +10,7 @@ import { LuFacebook } from "react-icons/lu";
 import { IoLogoSnapchat } from "react-icons/io5";
 import { LuInstagram } from "react-icons/lu";
 
-const Footer = () => {
+const FooterBox = () => {
   return (
     <footer
       className="bg-cover bg-center bg-no-repeat"
@@ -148,4 +148,4 @@ const FetchPosts = async () => {
   });
 };
 
-export default Footer;
+export default FooterBox;
