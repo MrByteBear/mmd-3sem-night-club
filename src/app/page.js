@@ -47,10 +47,26 @@ export default function Home() {
         <SectionElem title="Welcome in nightclub" className="py-28">
           <div className="mt-8 flex gap-8 max-lg:flex-wrap max-lg:justify-center">
             <WelcomeSectionImages header={"nightclub"}>
-              <Image src={IntroImg1} alt="Restaurant Dishes" />
+              <Image
+                src={IntroImg1}
+                alt="Restaurant Dishes"
+                className="h-full"
+              />
             </WelcomeSectionImages>
-            <Image src={IntroImg2} alt="Restaurant Dishes" />
-            <Image src={IntroImg3} alt="Bar" />
+            <WelcomeSectionImages header={"restaurant"}>
+              <Image
+                src={IntroImg2}
+                alt="Restaurant Dishes"
+                className="h-full"
+              />
+            </WelcomeSectionImages>
+            <WelcomeSectionImages header={"bar"}>
+              <Image
+                src={IntroImg3}
+                alt="Restaurant Dishes"
+                className="h-full"
+              />
+            </WelcomeSectionImages>
           </div>
         </SectionElem>
         <SectionElem
