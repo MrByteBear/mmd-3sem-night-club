@@ -16,11 +16,7 @@ const WelcomeSectionImages = ({ header, text, children, variant }) => {
           <CornerElem topLeft={true} className="w-11" />
           <div className="align-center flex h-full flex-col justify-center">
             <div className="border-accent mx-auto mb-4 flex w-24 items-center justify-center rounded-2xl border-2 p-4">
-              <Image
-                src={({ variant } = "Logo" ? LogoGuy : LogoGuy)}
-                alt="Logo Guy Icon"
-                width={40}
-              />
+              <Image src={LogoGuy} alt="Logo Guy Icon" width={40} />
             </div>
 
             <h3 className="text-accent mt-4 text-center text-2xl font-medium tracking-[0.48px] uppercase">
