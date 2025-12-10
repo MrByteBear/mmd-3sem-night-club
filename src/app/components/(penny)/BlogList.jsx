@@ -15,7 +15,7 @@ const BlogList = async ({ searchParams }) => {
 
   return (
     <>
-      <ul >
+      <ul>
         <FetchPosts page={currentPage} />
       </ul>
 
@@ -40,16 +40,12 @@ const FetchPosts = async ({ page }) => {
       const comments = await commentsResponse.json();
       const commentCount = Array.isArray(comments) ? comments.length : 0;
 
-       const isEven = (index + 1) % 2 === 0;
+      const isEven = (index + 1) % 2 === 0;
 
       return (
-        <li
-          key={post.id}
-          className="pb-8 md:pb-0"
-        >
-
+        <li key={post.id} className="pb-8 md:pb-0">
           {/* image row that breaks out */}
-          <div className="full-bleed md:grid md:grid-cols-2 bg-background ">
+          <div className="full-bleed bg-background md:grid md:grid-cols-2">
             <Image
               src={post.asset.url}
               alt={post.title}
@@ -61,9 +57,9 @@ const FetchPosts = async ({ page }) => {
               }`}
             />
 
-             {/* text column */}
+            {/* text column */}
             <div
-              className={`md:pt-12 md:pl-10 px-4 md:px-10 ${
+              className={`px-4 md:px-10 md:pt-12 md:pl-10 ${
                 isEven ? "md:order-1" : ""
               }`}
             >
