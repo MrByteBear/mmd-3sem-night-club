@@ -4,7 +4,7 @@ const BlogPostComments = ({ id, commentCount }) => {
   console.log("BlogPostComments received id:", id);
   return (
     <>
-      <h2 className="mb-11 pl-3 text-[32px] font-bold uppercase">
+      <h2 className="mt-[89px] mb-11 pl-3 text-[32px] font-bold uppercase">
         {commentCount} comment{commentCount !== 1 ? "s" : ""}
       </h2>
       <Suspense fallback={<div>Loading comments...</div>}>
