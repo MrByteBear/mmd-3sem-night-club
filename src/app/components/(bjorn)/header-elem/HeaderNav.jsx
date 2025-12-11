@@ -23,8 +23,7 @@ export default function HeaderNav({ children }) {
   ];
 
   return (
-    <header>
-      {children}
+    <header className="sticky top-0 z-50">
       <div className="bg-background border-accent relative grid grid-cols-(--grid-col-desktop) border-y-2 border-solid px-6 py-8 max-md:grid-cols-(--grid-col-mobile)">
         <div
           className="bg-accent absolute top-0 left-0 aspect-square w-11 [clip-path:polygon(0_0,100%_0,0_100%)]"

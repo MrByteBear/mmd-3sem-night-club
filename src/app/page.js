@@ -22,30 +22,29 @@ import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
 import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
 import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
 
-
 export default function Home() {
   return (
     <>
-      <HeaderNav>
-        <div className="grid place-items-center">
+      {/* hero */}
+      <div className="grid place-items-center">
+        <Image
+          src={HeaderBg2}
+          alt="Hero Banner"
+          className="h-[868px] object-cover [grid-area:1/1]"
+        />
+        <div className="grid place-items-center gap-y-4 px-8 [grid-area:1/1]">
+          <Image src={LogoSvg} alt="Logo" className="w-full max-w-[745px]" />
+          <p className="text-3xl font-medium tracking-[100%] uppercase max-lg:text-2xl max-md:text-xl max-sm:text-xs">
+            Have a good time
+          </p>
           <Image
-            src={HeaderBg2}
-            alt="Hero Banner"
-            className="h-[868px] object-cover [grid-area:1/1]"
+            src={BottomLine}
+            alt="Ornamental bottom border"
+            className="w-full"
           />
-          <div className="grid place-items-center gap-y-4 px-8 [grid-area:1/1]">
-            <Image src={LogoSvg} alt="Logo" className="w-full max-w-[745px]" />
-            <p className="text-3xl font-medium tracking-[100%] uppercase max-lg:text-2xl max-md:text-xl max-sm:text-xs">
-              Have a good time
-            </p>
-            <Image
-              src={BottomLine}
-              alt="Ornamental bottom border"
-              className="w-full"
-            />
-          </div>
         </div>
-      </HeaderNav>
+      </div>
+      <HeaderNav />
       <main style={{ backgroundImage: `url(${MainBg.src})` }}>
         <SectionElem title="Welcome in nightclub" className="py-28">
           <div className="mt-8 flex gap-8 max-lg:flex-wrap max-lg:justify-center">
@@ -81,7 +80,11 @@ export default function Home() {
           <SlidingGallery />
         </SectionElem>
 
-        <SectionElem title="Night club gallery" variant="breakoutAlt" className="my-12">
+        <SectionElem
+          title="Night club gallery"
+          variant="breakoutAlt"
+          className="my-12"
+        >
           {/* <ClubGallery displayFull={true}/> */}
           <ClubGalleryAnimated />
         </SectionElem>
