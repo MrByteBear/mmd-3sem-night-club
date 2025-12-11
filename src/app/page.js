@@ -6,7 +6,9 @@ import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
 import ClubGallery from "@/app/components/(bjorn)/club-gallery/ClubGallery";
+import ClubGalleryAnimated from "./components/(Meleese)/gallery/ClubGalleryAnimated";
 import MusicPlayer from "@/app/components/(bjorn)/music-player/MusicPlayer";
+import VideoPlayer from "./components/(Meleese)/VideoPlayer";
 import Subscribe from "./components/(Meleese)/Subscribe";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
@@ -17,7 +19,7 @@ import IntroImg1 from "@/app/assets/content-img/thumb1.jpg";
 import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
 import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
 import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
-import VideoPlayer from "./components/(Meleese)/VideoPlayer";
+
 
 export default function Home() {
   return (
@@ -50,7 +52,8 @@ export default function Home() {
           <SlidingGallery />
         </SectionElem>
         <SectionElem title="Night club gallery" variant="breakoutAlt" className="my-12">
-          <ClubGallery displayFull={true}/>
+          {/* <ClubGallery displayFull={true}/> */}
+          <ClubGalleryAnimated />
         </SectionElem>
         <SectionElem title="Night club track" className="my-12">
           <MusicPlayer/>
