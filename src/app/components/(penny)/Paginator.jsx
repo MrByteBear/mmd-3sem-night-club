@@ -7,6 +7,12 @@ export default function Paginator({ totalPages }) {
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
+  // Hide paginator if there's only 1 page
+  if (totalPages <= 1) {
+    return null;
+  }
+
+  
   function handleClick(pageNum) {
     router.push(`/blog?page=${pageNum}`);
   }

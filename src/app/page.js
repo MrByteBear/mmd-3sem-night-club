@@ -53,21 +53,21 @@ export default function Home() {
               <Image
                 src={IntroImg1}
                 alt="Restaurant Dishes"
-                className="h-full"
+                className="h-full w-full"
               />
             </WelcomeSectionImages>
             <WelcomeSectionImages header={"restaurant"}>
               <Image
                 src={IntroImg2}
                 alt="Restaurant Dishes"
-                className="h-full"
+                className="h-full w-full"
               />
             </WelcomeSectionImages>
             <WelcomeSectionImages header={"bar"}>
               <Image
                 src={IntroImg3}
                 alt="Restaurant Dishes"
-                className="h-full"
+                className="h-full w-full"
               />
             </WelcomeSectionImages>
           </div>
