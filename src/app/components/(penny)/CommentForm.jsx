@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
 
 const CommentForm = ({ id }) => {
+  const router = useRouter();
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
 
   const baseInput =
     "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
 
-
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccess(false);
 
@@ -59,8 +60,7 @@ const CommentForm = ({ id }) => {
 
       if (!response.ok) {
         setErrors({
-          form:
-            "Something went wrong while sending your comment. Please try again.",
+          form: "Something went wrong while sending your comment. Please try again.",
         });
         return;
       }
@@ -68,13 +68,15 @@ const CommentForm = ({ id }) => {
       e.target.reset();
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
+
+      // Refresh the page to show the new comment
+      router.refresh();
     } catch (err) {
       setErrors({
         form: "Network error. Please try again later.",
       });
-    } 
+    }
   };
-
 
   return (
     <div>
@@ -85,20 +87,20 @@ const CommentForm = ({ id }) => {
         <div className="mt-8 mb-8 flex flex-col gap-4 md:gap-6">
           <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-6">
             <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name*"
-                  className={`${baseInput} ${
-                    errors.name ? "border-red-500" : "border-foreground"
-                  }`}
-                />
-                {errors.name && (
-                  <p className="mt-1 text-xs text-red-400">{errors.name}</p>
-                )}
-              </div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name*"
+                className={`${baseInput} ${
+                  errors.name ? "border-red-500" : "border-foreground"
+                }`}
+              />
+              {errors.name && (
+                <p className="mt-1 text-xs text-red-400">{errors.name}</p>
+              )}
+            </div>
 
-           <div>
+            <div>
               <input
                 type="email"
                 name="email"
@@ -114,16 +116,16 @@ const CommentForm = ({ id }) => {
           </div>
 
           <div>
-              <textarea
-                name="comment"
-                placeholder="Your Comment*"
-                className={`${baseInput} h-32 min-h-80 ${
-                  errors.comment ? "border-red-500" : "border-foreground"
-                }`}
-              />
-              {errors.comment && (
-                <p className="mt-1 text-xs text-red-400">{errors.comment}</p>
-              )}
+            <textarea
+              name="comment"
+              placeholder="Your Comment*"
+              className={`${baseInput} h-32 min-h-80 ${
+                errors.comment ? "border-red-500" : "border-foreground"
+              }`}
+            />
+            {errors.comment && (
+              <p className="mt-1 text-xs text-red-400">{errors.comment}</p>
+            )}
           </div>
 
           {errors.form && (
@@ -136,7 +138,7 @@ const CommentForm = ({ id }) => {
             </p>
           )}
           <SubmitButton />
-        {/* <div className="mt-4 flex justify-end">
+          {/* <div className="mt-4 flex justify-end">
           <button
             type="submit"
             className="inline-flex w-44 items-center justify-center gap-2.5 border-t-2 border-b-2 border-white px-4 py-5"
