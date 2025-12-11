@@ -31,12 +31,16 @@ export default function HeaderNav({ children }) {
           aria-hidden="true"
         />
         <div className="col-start-2 flex items-center justify-between">
-          <Image src={Logo} alt="Company logo" className="object-cover" />
-          <nav className={`group popoverClosed ${isMenuOpen ? 'popoverOpen max-lg:bg-background-alpha' : ''}`}>
-            <button 
+          <Link href="/">
+            <Image src={Logo} alt="Company logo" className="object-cover" />
+          </Link>
+          <nav
+            className={`group popoverClosed ${isMenuOpen ? "popoverOpen max-lg:bg-background-alpha" : ""}`}
+          >
+            <button
               type="button"
               onClick={() => setIsMenuOpen(false)}
-              className="hidden absolute top-0 right-0 pt-4 pr-4 max-lg:block max-lg:cursor-pointer"
+              className="absolute top-0 right-0 hidden pt-4 pr-4 max-lg:block max-lg:cursor-pointer"
             >
               <LuX className="h-8 w-8 stroke-4" />
             </button>
@@ -67,12 +71,12 @@ export default function HeaderNav({ children }) {
               })}
             </ul>
           </nav>
-          <button 
+          <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
-            className="hidden max-lg:block max-lg:cursor-pointer w-8 h-8"
+            className="hidden h-8 w-8 max-lg:block max-lg:cursor-pointer"
           >
-            <LuAlignJustify className="h-8 w-8"/>
+            <LuAlignJustify className="h-8 w-8" />
           </button>
         </div>
         <div
