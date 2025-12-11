@@ -59,7 +59,7 @@ function GalleryView({ data, displayFull = false }) {
       </div>
       {displayFull && (
         <>
-          <div className="grid grid-cols-[1fr_1.33fr_1fr_1.33fr] *:h-full *:w-full *:object-cover max-md:grid-cols-1">
+          {/* <div className="grid grid-cols-[1fr_1.33fr_1fr_1.33fr] *:h-full *:w-full *:object-cover max-md:grid-cols-1">
             <Image
               src={data[7]?.asset?.url || "/placeholder.webp"}
               alt={data[7]?.description || "Placeholder img of cat"}
@@ -88,7 +88,7 @@ function GalleryView({ data, displayFull = false }) {
               height={560}
               unoptimized
             />
-          </div>
+          </div> */}
           <div className="grid grid-cols-[1.66fr_1.66fr_1.33fr] *:h-full *:w-full *:object-cover max-md:grid-cols-1">
             <Image
               src={data[11]?.asset?.url || "/placeholder.webp"}
