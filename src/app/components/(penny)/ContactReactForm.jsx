@@ -59,7 +59,7 @@ const ContactReactForm = () => {
     <div>
       {/* Contact form */}
       <form
-        className="m-auto flex max-w-md flex-col gap-4"
+        className="m-auto flex max-w-[700px] flex-col gap-4"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
