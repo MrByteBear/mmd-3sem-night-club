@@ -12,6 +12,7 @@ import VideoPlayer from "./components/(Meleese)/VideoPlayer";
 import Subscribe from "./components/(Meleese)/Subscribe";
 import WelcomeSectionImages from "./components/(penny)/WelcomeSectionImages";
 import RecentBlog from "./components/(penny)/RecentBlog";
+import SubscribeReactForm from "./components/(penny)/SubscribeReactForm";
 // Asset Imports
 import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
 import BottomLine from "@/app/assets/bottom_line.png";
@@ -97,7 +98,7 @@ export default function Home() {
         <SectionElem title="Recent blog">
           <RecentBlog />
         </SectionElem>
-        <Subscribe />
+        <SubscribeReactForm />
       </main>
       {/* <FooterBox /> */}
     </>

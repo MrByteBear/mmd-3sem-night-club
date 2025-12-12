@@ -3,7 +3,6 @@ import patternBg from "@/app/assets/bg/pattern_bg.jpg";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import SubHeader from "@/app/components/(Meleese)/SubHeader";
 import { Suspense } from "react";
-import SubscribeReactForm from "@/app/components/(penny)/SubscribeReactForm";
 
 export default async function Blog({ searchParams }) {
   const params = await searchParams;
@@ -18,7 +17,6 @@ export default async function Blog({ searchParams }) {
       >
         <Suspense fallback={<div>Loading blog posts...</div>}>
           <BlogList searchParams={params} />
-          <SubscribeReactForm />
         </Suspense>
       </main>
     </div>
