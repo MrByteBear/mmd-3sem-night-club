@@ -39,19 +39,29 @@
 
 @layer components {
   .bottomLine-l {
-    --custom-gradient: linear-gradient(90deg, rgba(217, 217, 217, 0.00) 0%, var(--accent) 50.94%, rgba(217, 217, 217, 0.00) 99.99%);
-    @apply [background-image:var(--custom-gradient)] w-60 h-0.5
+    --custom-gradient: linear-gradient(
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      var(--accent) 50.94%,
+      rgba(217, 217, 217, 0) 99.99%
+    );
+    @apply h-0.5 w-60 [background-image:var(--custom-gradient)];
   }
   .bottomLine-s {
-    background-image: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 0%, transparent) 0%, var(--color-accent) 50%, color-mix(in srgb, var(--color-accent) 0%, transparent) 100%);
-    @apply bg-linear-to-r from-transparent via-50% via-accent to-transparent w-12 h-0.5
+    background-image: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-accent) 0%, transparent) 0%,
+      var(--color-accent) 50%,
+      color-mix(in srgb, var(--color-accent) 0%, transparent) 100%
+    );
+    @apply via-accent h-0.5 w-12 bg-linear-to-r from-transparent via-50% to-transparent;
   }
   .popoverClosed {
-      @apply max-lg:invisible max-lg:pointer-events-none max-lg:opacity-0 max-lg:transition-[opacity,translate] max-lg:transition-discrete max-lg:duration-600 max-lg:fixed max-lg:inset-0 max-lg:w-screen max-lg:h-screen max-lg:backdrop-blur-sm max-lg:m-0 max-lg:-translate-y-full;
+    @apply max-lg:pointer-events-none max-lg:invisible max-lg:fixed max-lg:inset-0 max-lg:m-0 max-lg:h-screen max-lg:w-screen max-lg:-translate-y-full max-lg:opacity-0 max-lg:backdrop-blur-sm max-lg:transition-[opacity,translate] max-lg:transition-discrete max-lg:duration-600;
   }
-  
+
   .popoverOpen {
-    @apply max-lg:z-50 max-lg:visible max-lg:pointer-events-auto max-lg:grid max-lg:place-content-center max-lg:opacity-100 max-lg:translate-y-0;
+    @apply max-lg:pointer-events-auto max-lg:visible max-lg:z-50 max-lg:grid max-lg:translate-y-0 max-lg:place-content-center max-lg:opacity-100;
   }
   .noScrollbar {
     scrollbar-width: none;
@@ -63,6 +73,7 @@
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-ubuntu-sans), sans-serif;
+    @apply min-h-dvh max-md:min-h-svh;
   }
 
   main {
@@ -70,17 +81,15 @@
     /* Main will have the classes: display: grid; grid-template-columns: var(--grid-col-desktop); min-height: 100dvh; */
     /* On Mobile, using "max-md:" which applies a media query at max 768 px width */
     /* (Mobile Breakpoint) I apply min-height: 100svh; and grid-template-columns: var(--grid-col-mobile); */
-    @apply grid min-h-dvh grid-cols-(--grid-col-desktop) max-md:min-h-svh max-md:grid-cols-(--grid-col-mobile);
+    @apply grid grid-cols-(--grid-col-desktop) max-md:grid-cols-(--grid-col-mobile);
 
     > * {
       /* All direct descendants gets placed in the minmax column. */
       @apply col-start-2 col-end-auto;
     }
   }
-/* Added to allow full bleed on images in blog post, can be moved to components if you find it confusing here */
+  /* Added to allow full bleed on images in blog post, can be moved to components if you find it confusing here */
   .full-bleed {
-  @apply w-screen relative left-1/2 right-1/2 -ml-[50vw] mr-[50vw];
-}
-
-
+    @apply relative right-1/2 left-1/2 mr-[50vw] -ml-[50vw] w-screen;
+  }
 }
