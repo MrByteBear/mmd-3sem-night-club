@@ -56,7 +56,7 @@ const ContactReactForm = () => {
   // rendering the component
 
   return (
-    <div>
+    <div className="mb-[90px]">
       {/* Contact form */}
       <form
         className="m-auto flex max-w-[700px] flex-col gap-4"
