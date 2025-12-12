@@ -94,14 +94,14 @@ const ContactReactForm = () => {
               // if input is empty - show error message
               required: "Email is required",
               validate: (value) => {
-                // input must include @ - if not show error message
+                // input must live up to expectations - if not show error message
                 if (!/^\S+@\S+\.\S+$/.test(value)) {
                   return "Please enter a valid email address";
                 }
                 return true;
               },
             })}
-            type="email"
+            type="text"
             placeholder="Your Email*"
             className={`${base} ${
               errors.email ? "border-red-500" : "border-white"
