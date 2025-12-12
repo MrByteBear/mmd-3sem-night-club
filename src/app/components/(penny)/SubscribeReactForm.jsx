@@ -16,9 +16,14 @@ const SubscribeReactForm = () => {
   // when form is submitted
   const onSubmit = async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      throw new Error();
-      console.log(data);
+      // Add a small delay to show the submitting state
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // push data to api
+      const response = await fetch("http://localhost:4000/newsletters", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
     } catch (error) {
       setError("root", {
         message: "Subscription failed. Please try again.",
