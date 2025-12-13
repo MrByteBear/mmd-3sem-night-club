@@ -63,6 +63,34 @@
   .popoverOpen {
     @apply max-lg:pointer-events-auto max-lg:visible max-lg:z-50 max-lg:grid max-lg:translate-y-0 max-lg:place-content-center max-lg:opacity-100;
   }
+
+  .hoverContainer {
+    /* Apply this, alongside "group" for the parent hover container*/
+    /* There must only be one parent hover container, the rest can be children and children of children */
+    @apply relative;
+  } 
+
+  .hoverChild {
+    /* Apply this to all children of .hoverContainer */
+    /* If children of children also need hover properties, simply add "group" on the parent .hoverChild */
+    /* and use group-hover: */
+    @apply invisible pointer-events-none duration-600 opacity-0 transition-discrete transition-[opacity,translate] group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto;
+  }
+  
+  /* These hover animations can be applied to dictate what type of translate animation should be used. */
+  .hoverToTop {
+    @apply translate-y-1/2 group-hover:translate-y-0;
+  }
+  .hoverToBottom {
+    @apply -translate-y-1/2 group-hover:translate-y-0;
+  }
+  .hoverToRight {
+    @apply -translate-x-full group-hover:translate-x-0;
+  }
+  .hoverToLeft {
+    @apply translate-x-full group-hover:translate-x-0;
+  }
+
   .noScrollbar {
     scrollbar-width: none;
   }
