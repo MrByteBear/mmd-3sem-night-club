@@ -17,6 +17,7 @@ export default async function Blog({ searchParams }) {
       >
         <Suspense fallback={<div>Loading blog posts...</div>}>
           <BlogList searchParams={params} />
+      
         </Suspense>
       </main>
     </div>
