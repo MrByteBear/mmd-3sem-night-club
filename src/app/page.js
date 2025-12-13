@@ -14,38 +14,18 @@ import WelcomeSectionImages from "./components/(penny)/WelcomeSectionImages";
 import RecentBlog from "./components/(penny)/RecentBlog";
 import SubscribeReactForm from "./components/(penny)/SubscribeReactForm";
 // Asset Imports
-import HeaderBg2 from "@/app/assets/bg/header_bg_2.jpg";
-import BottomLine from "@/app/assets/bottom_line.png";
-import LogoSvg from "@/app/assets/icon/BetterLogo.svg";
 import MainBg from "@/app/assets/bg/pattern_bg.jpg";
 import IntroImg1 from "@/app/assets/content-img/thumb1.jpg";
 import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
 import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
 import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
+import HeroBanner from "./components/(bjorn)/hero-banner/HeroBanner";
 
 export default function Home() {
   return (
     <>
-      {/* hero */}
-      <div className="grid place-items-center">
-        <Image
-          src={HeaderBg2}
-          alt="Hero Banner"
-          className="h-[868px] object-cover [grid-area:1/1]"
-        />
-        <div className="grid place-items-center gap-y-4 px-8 [grid-area:1/1]">
-          <Image src={LogoSvg} alt="Logo" className="w-full max-w-[745px]" />
-          <p className="text-3xl font-medium tracking-[100%] uppercase max-lg:text-2xl max-md:text-xl max-sm:text-xs">
-            Have a good time
-          </p>
-          <Image
-            src={BottomLine}
-            alt="Ornamental bottom border"
-            className="w-full"
-          />
-        </div>
-      </div>
-      <HeaderNav />
+      <HeroBanner/>
+      <HeaderNav/>
       <main style={{ backgroundImage: `url(${MainBg.src})` }}>
         <SectionElem title="Welcome in nightclub" className="py-28">
           <div className="mt-8 flex gap-8 max-lg:flex-wrap max-lg:justify-center">
