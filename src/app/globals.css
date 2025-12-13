@@ -40,11 +40,11 @@
 @layer components {
   .bottomLine-l {
     --custom-gradient: linear-gradient(90deg, rgba(217, 217, 217, 0.00) 0%, var(--accent) 50.94%, rgba(217, 217, 217, 0.00) 99.99%);
-    @apply [background-image:var(--custom-gradient)] w-60 h-0.5
+    @apply [background-image:var(--custom-gradient)] w-60 h-0.5;
   }
   .bottomLine-s {
     background-image: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 0%, transparent) 0%, var(--color-accent) 50%, color-mix(in srgb, var(--color-accent) 0%, transparent) 100%);
-    @apply bg-linear-to-r from-transparent via-50% via-accent to-transparent w-12 h-0.5
+    @apply bg-linear-to-r from-transparent via-50% via-accent to-transparent w-12 h-0.5;
   }
   .popoverClosed {
       @apply max-lg:invisible max-lg:pointer-events-none max-lg:opacity-0 max-lg:transition-[opacity,translate] max-lg:transition-discrete max-lg:duration-600 max-lg:fixed max-lg:inset-0 max-lg:w-screen max-lg:h-screen max-lg:backdrop-blur-sm max-lg:m-0 max-lg:-translate-y-full;
@@ -53,6 +53,34 @@
   .popoverOpen {
     @apply max-lg:z-50 max-lg:visible max-lg:pointer-events-auto max-lg:grid max-lg:place-content-center max-lg:opacity-100 max-lg:translate-y-0;
   }
+
+  .hoverContainer {
+    /* Apply this, alongside "group" for the parent hover container*/
+    /* There must only be one parent hover container, the rest can be children and children of children */
+    @apply relative;
+  } 
+
+  .hoverChild {
+    /* Apply this to all children of .hoverContainer */
+    /* If children of children also need hover properties, simply add "group" on the parent .hoverChild */
+    /* and use group-hover: */
+    @apply invisible pointer-events-none duration-600 opacity-0 transition-discrete transition-[opacity,translate] group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto;
+  }
+  
+  /* These hover animations can be applied to dictate what type of translate animation should be used. */
+  .hoverToTop {
+    @apply translate-y-1/2 group-hover:translate-y-0;
+  }
+  .hoverToBottom {
+    @apply -translate-y-1/2 group-hover:translate-y-0;
+  }
+  .hoverToRight {
+    @apply -translate-x-full group-hover:translate-x-0;
+  }
+  .hoverToLeft {
+    @apply translate-x-full group-hover:translate-x-0;
+  }
+
   .noScrollbar {
     scrollbar-width: none;
   }
