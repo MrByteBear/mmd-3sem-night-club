@@ -10,7 +10,7 @@ import Logo from "@/app/assets/Logo.png";
 import { LuAlignJustify } from "react-icons/lu";
 import { LuX } from "react-icons/lu";
 
-export default function HeaderNav({ children }) {
+export default function HeaderNav() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
