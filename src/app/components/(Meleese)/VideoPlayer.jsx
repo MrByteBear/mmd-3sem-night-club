@@ -21,31 +21,30 @@ export default function VideoPlayer() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="mb-[26px] flex flex-col items-center gap-4 md:mb-[104px]">
+      {/* Needs Full bleed when screen is small */}
 
-        {/* Needs Full bleed when screen is small */}
-
-      <div className="w-full max-w-3xl rounded-lg overflow-hidden shadow-lg sm:col-start-1 sm:col-end-4">
+      <div className="w-full max-w-3xl overflow-hidden rounded-lg shadow-lg sm:col-start-1 sm:col-end-4">
         <video
-          key={index}         
+          key={index}
           src={videos[index]}
           controls
           autoPlay
-          className="w-full h-auto"
+          className="h-auto w-full"
         />
       </div>
 
-      <div className="flex items-center gap-6 text-white">
+      <div className="mt-8 flex items-center gap-6 text-white">
         <button
           onClick={prevVideo}
-          className="p-3  border border-white hover:bg-white hover:text-black transition"
+          className="border border-white p-3 transition hover:bg-white hover:text-black"
         >
           <FaChevronLeft size={15} />
         </button>
 
         <button
           onClick={nextVideo}
-          className="p-3  border border-white hover:bg-white hover:text-black transition"
+          className="border border-white p-3 transition hover:bg-white hover:text-black"
         >
           <FaChevronRight size={15} />
         </button>

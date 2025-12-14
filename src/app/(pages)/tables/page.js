@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Tables from "@/app/components/(Meleese)/Tables";
-import BookingForm from "@/app/components/(Meleese)/BookingForm";
+import BookingForm from "@/app/components/(penny)/BookingReactForm";
+// import BookingForm from "@/app/components/(Meleese)/BookingForm";
+
 import SubHeader from "@/app/components/(Meleese)/SubHeader";
 import HeaderNav from "@/app/components/(Bjorn)/header-elem/HeaderNav";
-import FooterBox from "@/app/components/(Bjorn)/footer-elem/FooterBox";
 
-
-const TABLES = [ 
+const TABLES = [
   { id: 1, type: 1 },
   { id: 2, type: 1 },
   { id: 3, type: 2 },
@@ -26,24 +26,27 @@ const TABLES = [
   { id: 15, type: 1 },
 ];
 
-
 export default function TablesPage() {
   const [selectedTable, setSelectedTable] = useState(null);
 
-  return ( <div>
-    <HeaderNav/>
-    <main>
-    <SubHeader title="Book Table" />
-      <section>
-        <Tables
-          tables={TABLES}
-          selectedTable={selectedTable}
-          onSelect={setSelectedTable}
-        />
-        <BookingForm selectedTable={selectedTable} />
-      </section>
-    </main>
-    {/* <FooterBox /> */}
+  return (
+    <div>
+      <HeaderNav />
+      <main>
+        <SubHeader title="Book Table" />
+        <section>
+          <Tables
+            tables={TABLES}
+            selectedTable={selectedTable}
+            onSelect={setSelectedTable}
+          />
+          <BookingForm
+            selectedTable={selectedTable}
+            onTableReset={() => setSelectedTable(null)}
+          />
+        </section>
+      </main>
+      {/* <FooterBox /> */}
     </div>
   );
 }
