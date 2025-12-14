@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import DatePicker from "@/app/components/(Meleese)/DatePicker";
+import { useForm, Controller } from "react-hook-form";
+import DatePicker from "@/app/components/(penny)/ReactDatePicker";
 import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
 
 const BookingReactForm = ({ selectedTable }) => {
@@ -13,11 +13,13 @@ const BookingReactForm = ({ selectedTable }) => {
     handleSubmit,
     setError,
     reset,
+    control,
     formState: { errors, isSubmitting },
   } = useForm();
 
   // Base input styling
   const base = "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
+  const errorStyle = "mt-1 text-xs text-red-400";
 
   // when form is submitted, handleSubmit calls onSubmit function
   const onSubmit = async (data) => {
@@ -114,11 +116,7 @@ const BookingReactForm = ({ selectedTable }) => {
               errors.name ? "border-red-500" : "border-white"
             }`}
           />
-          {errors.name && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.name.message}
-            </p>
-          )}
+          {errors.name && <p className={errorStyle}>{errors.name.message}</p>}
         </div>
 
         <div>
@@ -139,16 +137,17 @@ const BookingReactForm = ({ selectedTable }) => {
               errors.email ? "border-red-500" : "border-white"
             }`}
           />
-          {errors.email && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.email.message}
-            </p>
-          )}
+          {errors.email && <p className={errorStyle}>{errors.email.message}</p>}
         </div>
 
         {/* TABLE (from selection) */}
         <div>
           <input
+            {...register("table", {
+              // if input is empty - show error message
+              required: "Table selection is required",
+              validate: () => (selectedTable ? true : "Please select a table"),
+            })}
             readOnly
             className={`${base} ${
               errors.table ? "border-red-500" : "border-white"
@@ -157,11 +156,7 @@ const BookingReactForm = ({ selectedTable }) => {
               selectedTable ? `Table Number: ${selectedTable}` : "Table Number*"
             }
           />
-          {errors.table && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.table.message}
-            </p>
-          )}
+          {errors.table && <p className={errorStyle}>{errors.table.message}</p>}
         </div>
 
         <div>
@@ -176,14 +171,23 @@ const BookingReactForm = ({ selectedTable }) => {
             }`}
           />
           {errors.guests && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.guests.message}
-            </p>
+            <p className={errorStyle}>{errors.guests.message}</p>
           )}
         </div>
 
         <div className="w-full">
-          <DatePicker error={errors.date} />
+          <Controller
+            name="date"
+            control={control}
+            rules={{ required: "Please select a date" }}
+            render={({ field }) => (
+              <DatePicker
+                value={field.value}
+                onChange={field.onChange}
+                error={errors.date?.message}
+              />
+            )}
+          />
         </div>
 
         <div>
@@ -198,9 +202,7 @@ const BookingReactForm = ({ selectedTable }) => {
             }`}
           />
           {errors.contact && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.contact.message}
-            </p>
+            <p className={errorStyle}>{errors.contact.message}</p>
           )}
         </div>
 
@@ -217,15 +219,13 @@ const BookingReactForm = ({ selectedTable }) => {
         {/* Success message */}
         {success && (
           <p className="text-accent mt-4 text-center text-sm font-semibold tracking-wide uppercase md:col-span-2">
-            Your booking has been sent! 🎉
+            Your booking has been sent!
           </p>
         )}
 
         {/* Error messages */}
         {errors.root && (
-          <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase md:col-span-2">
-            {errors.root.message}
-          </p>
+          <p className={`${errorStyle} md:col-span-2`}>{errors.root.message}</p>
         )}
       </form>
     </div>
