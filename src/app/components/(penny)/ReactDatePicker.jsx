@@ -6,6 +6,10 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import { da } from "date-fns/locale/da";
+registerLocale("da", da);
+
 // Use the DatePicker library to use in our BookingForm component
 const DateInput = forwardRef(function DateInput(
   { value, onClick, error },
@@ -42,14 +46,16 @@ export default function DatePickerField({ value, onChange, error }) {
   return (
     <div className="w-full">
       <DatePicker
+        locale="da"
         selected={value}
         onChange={onChange}
-        dateFormat="dd-MM-yyyy"
         customInput={<DateInput error={error} />}
         // make the datepicker take full width
         wrapperClassName="w-full"
         // this makes the popup align under the input
         popperClassName="z-50"
+        showTimeSelect
+        dateFormat="Pp"
       />
 
       {error && <p className="mt-1 text-xs text-red-400">{error}</p>}

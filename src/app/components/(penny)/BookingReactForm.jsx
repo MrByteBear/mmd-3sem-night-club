@@ -1,13 +1,17 @@
+// this is a rewrite of BookingForm.jsx using react-hook-form library
 "use client";
 
+// React imports
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+// Component imports
 import DatePicker from "@/app/components/(penny)/ReactDatePicker";
 import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
 
-const BookingReactForm = ({ selectedTable }) => {
+const BookingReactForm = ({ selectedTable, onTableReset }) => {
   const [success, setSuccess] = useState(false);
 
+  // useForm hook to manage form state and validation
   const {
     register,
     handleSubmit,
@@ -17,7 +21,7 @@ const BookingReactForm = ({ selectedTable }) => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  // Base input styling
+  // styles
   const base = "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
   const errorStyle = "mt-1 text-xs text-red-400";
 
@@ -48,9 +52,10 @@ const BookingReactForm = ({ selectedTable }) => {
         return;
       }
 
-      // Add table number to data
+      // Add table number to data and remove the table field (it's just for display)
+      const { table, ...formData } = data;
       const bookingData = {
-        ...data,
+        ...formData,
         tableNumber: selectedTable,
       };
 
@@ -63,7 +68,7 @@ const BookingReactForm = ({ selectedTable }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData),
       });
-
+      // If response is not successful - show error message
       if (!response.ok) {
         setError("root", {
           message: "Booking submission failed. Please try again.",
@@ -73,7 +78,15 @@ const BookingReactForm = ({ selectedTable }) => {
 
       // If submission succeeds - show success message
       setSuccess(true);
+
+      // Reset form fields
       reset();
+
+      // Reset selected table in parent component
+      if (onTableReset) {
+        onTableReset();
+      }
+
       setTimeout(() => setSuccess(false), 5000);
 
       // if error occurs during fetch catch it and show error message

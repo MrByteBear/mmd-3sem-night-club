@@ -40,7 +40,10 @@ export default function TablesPage() {
             selectedTable={selectedTable}
             onSelect={setSelectedTable}
           />
-          <BookingForm selectedTable={selectedTable} />
+          <BookingForm
+            selectedTable={selectedTable}
+            onTableReset={() => setSelectedTable(null)}
+          />
         </section>
       </main>
       {/* <FooterBox /> */}
