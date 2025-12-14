@@ -2,15 +2,18 @@
 const nextConfig = {
   /* config options here */
   images: {
-    remotePatterns: [
-      {
-      protocol: "http",
-      hostname: "localhost",
-      port: "4000",
-      pathname: "/**/**",
-      }
-    ]
-  }
+    // tell image component to not optimize images (for localhost use)
+
+    unoptimized: true,
+    // remotePatterns: [
+    //   {
+    //     protocol: "http",
+    //     hostname: "localhost",
+    //     port: "4000",
+    //     pathname: "/**/**",
+    //   },
+    // ],
+  },
 };
 
 export default nextConfig;
