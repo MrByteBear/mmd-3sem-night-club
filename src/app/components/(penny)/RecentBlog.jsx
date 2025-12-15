@@ -16,9 +16,10 @@ const FetchPosts = async () => {
   const url = "http://localhost:4000/blogposts";
   const response = await fetch(url);
   const posts = await response.json();
+  const postsList = posts.slice(0, 3); // Get only the 3 most recent posts
 
   return Promise.all(
-    posts.map(async (post) => {
+    postsList.map(async (post) => {
       // Fetch comments to get count for each post
       const commentsResponse = await fetch(
         `http://localhost:4000/comments?blogpostId=${post.id}`,
