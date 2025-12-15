@@ -17,6 +17,7 @@ const ContactReactForm = () => {
 
   // Base input styling
   const base = "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
+  const errorStyle = "mt-1 text-xs text-red-400";
 
   // when form is submitted, handleSubmit calls onSubmit function
   const onSubmit = async (data) => {
@@ -81,11 +82,7 @@ const ContactReactForm = () => {
               errors.name ? "border-red-500" : "border-white"
             }`}
           />
-          {errors.name && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.name.message}
-            </p>
-          )}
+          {errors.name && <p className={errorStyle}>{errors.name.message}</p>}
         </div>
 
         <div>
@@ -107,11 +104,7 @@ const ContactReactForm = () => {
               errors.email ? "border-red-500" : "border-white"
             }`}
           />
-          {errors.email && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.email.message}
-            </p>
-          )}
+          {errors.email && <p className={errorStyle}>{errors.email.message}</p>}
         </div>
 
         <div>
@@ -126,9 +119,7 @@ const ContactReactForm = () => {
             }`}
           />
           {errors.comment && (
-            <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-              {errors.comment.message}
-            </p>
+            <p className={errorStyle}>{errors.comment.message}</p>
           )}
         </div>
 
