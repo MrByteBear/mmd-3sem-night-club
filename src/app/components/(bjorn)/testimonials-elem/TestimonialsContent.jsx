@@ -85,11 +85,11 @@ export default function TestimonialsContent({ data }) {
 
   return (
     <div className="bg-background-alpha col-span-full grid grid-cols-subgrid *:col-start-2">
-      <div className="grid place-items-center gap-y-16">
+      <div className="grid place-items-center gap-y-16 my-24">
         <div className="w-full overflow-hidden px-8 max-md:px-0">
           <div
             ref={scrollingContainer}
-            className="noScrollbar mt-8 flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth"
+            className="noScrollbar flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth"
             onScroll={handleScroll}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
