@@ -35,8 +35,8 @@ const BlogPost = async ({ params }) => {
         <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
           {post.title}
         </h2>
-        <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
-          BY: {post.author} / {commentCount} Comments / 16 Nov 2018
+        <p className="text-accent mt-4 font-medium tracking-[0.36px]">
+          BY: {post.author} / {commentCount} Comments
         </p>
         <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px] md:text-[18px]">
           {post.content}

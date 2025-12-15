@@ -56,7 +56,6 @@ const FetchPosts = async ({ page }) => {
               alt={post.title}
               width={960}
               height={530}
-              
               className={`h-[221px] w-full object-cover md:h-full md:max-h-[530px] ${
                 isEven ? "md:order-2" : ""
               }`}
@@ -71,8 +70,8 @@ const FetchPosts = async ({ page }) => {
               <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
                 {post.title}
               </h2>
-              <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
-                BY: {post.author} / {commentCount} comments / 16 Nov 2018
+              <p className="text-accent mt-4 font-medium tracking-[0.36px]">
+                BY: {post.author} / {commentCount} comments
               </p>
               <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
                 {post.content.substring(0, 450)}
