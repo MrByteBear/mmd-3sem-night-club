@@ -8,7 +8,7 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from "@/app/components/(penny)/ReactDatePicker";
 import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
-const BookingReactForm = ({ selectedTable, onTableReset }) => {
+const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
   const [success, setSuccess] = useState(false);
 
   // useForm hook to manage form state and validation
@@ -30,7 +30,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
   const onSubmit = async (data) => {
     try {
       setSuccess(false);
-
+      console.log(tables, selectedTable);
       // Validate selected table
       if (!selectedTable) {
         setError("table", {
@@ -41,14 +41,16 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
 
       // Validate number of guests
       const guests = Number(data.guests);
+      const seats = tables.find((i) => i.id == selectedTable).type;
+      console.log(seats);
       if (!Number.isFinite(guests) || guests <= 0) {
         setError("guests", {
           message: "Please enter a valid number of guests",
         });
         return;
-      } else if (guests > 78) {
+      } else if (guests > seats) {
         setError("guests", {
-          message: "Our maximum capacity is 78 guests",
+          message: "Table only has room for " + seats + " guests",
         });
         return;
       }
