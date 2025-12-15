@@ -20,6 +20,7 @@ import IntroImg1 from "@/app/assets/content-img/thumb1.jpg";
 import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
 import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
 import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
+import FooterBg from "@/app/assets/bg/footerbg.jpg";
 import HeroBanner from "./components/(bjorn)/hero-banner/HeroBanner";
 
 export default function Home() {
@@ -56,16 +57,15 @@ export default function Home() {
         <SectionElem
           title="Events of the month"
           variant="breakout"
-          className="bg-cover bg-center py-16"
+          className="bg-cover bg-center py-16 *:col-start-2"
           backgroundImage={SliderBg.src}
         >
           <SlidingGallery />
         </SectionElem>
-
         <SectionElem
           title="Night club gallery"
-          variant="breakoutAlt"
-          className="my-12"
+          variant="breakout"
+          className="my-12 *:first:col-start-2"
         >
           {/* <ClubGallery displayFull={true}/> */}
           <ClubGalleryAnimated />
@@ -76,7 +76,7 @@ export default function Home() {
         <SectionElem title="Latest Videos">
           <VideoPlayer />
         </SectionElem>
-        <SectionElem variant="breakoutAlt" className="my-12">
+        <SectionElem variant="breakout" className="my-12 bg-cover bg-center" backgroundImage={FooterBg.src}>
           <TestimonialsElem />
         </SectionElem>
         <SectionElem title="Recent blog">

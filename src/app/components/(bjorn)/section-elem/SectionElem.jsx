@@ -8,10 +8,8 @@ export default function SectionElem({
   const variants = {
     default: "grid place-items-center px-6",
     breakout:
-      "col-span-full grid grid-cols-subgrid place-items-center *:col-start-2",
-    breakoutAlt:
-      "col-span-full grid grid-cols-subgrid place-items-center *:first:col-start-2"
-  };
+      "col-span-full grid grid-cols-subgrid place-items-center"
+    };
 
   return (
     <section

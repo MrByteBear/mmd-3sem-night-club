@@ -84,69 +84,85 @@ export default function TestimonialsContent({ data }) {
   };
 
   return (
-    <div className="grid place-items-center gap-y-16">
-      <div className="w-full overflow-hidden px-8 max-md:px-0">
-        <div
-          ref={scrollingContainer}
-          className="noScrollbar mt-8 flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth"
-          onScroll={handleScroll}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          tabIndex={0}
-        >
-          {/* Desktop Mapping */}
-          {data.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="flex-[0_0_100%] snap-start gap-y-8 my-4 grid place-items-center place-content-center"
-              >
-                <ImageHover
-                  imgSrc={item?.asset?.url}
-                  imgAlt={item?.name}
-                  imgWidth={210}
-                  imgHeight={210}
-                />
-                <div className="font-medium text-center">
-                  <p className="text-2xl tracking-7pct ">{item?.name}</p>
-                  <p className="text-lg mt-8 max-w-[107ch]">{item?.content}</p>
-                </div>
+    <div className="bg-background-alpha col-span-full grid grid-cols-subgrid *:col-start-2">
+      <div className="grid place-items-center gap-y-16">
+        <div className="w-full overflow-hidden px-8 max-md:px-0">
+          <div
+            ref={scrollingContainer}
+            className="noScrollbar mt-8 flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth"
+            onScroll={handleScroll}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            tabIndex={0}
+          >
+            {/* Desktop Mapping */}
+            {data.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="my-4 grid flex-[0_0_100%] snap-start place-content-center place-items-center gap-y-8"
+                >
+                  <ImageHover
+                    imgSrc={item?.asset?.url}
+                    imgAlt={item?.name}
+                    imgWidth={210}
+                    imgHeight={210}
+                  />
+                  <div className="text-center font-medium">
+                    <p className="tracking-7pct text-2xl">{item?.name}</p>
+                    <p className="mt-8 max-w-[107ch] text-lg">
+                      {item?.content}
+                    </p>
+                  </div>
                   <ul className="flex gap-x-6 max-lg:justify-between max-lg:gap-x-0">
                     <li>
-                      <a href={item?.facebook} target="_blank" className="grid place-content-center w-12 aspect-square outline-foreground outline-2 outline-solid">
+                      <a
+                        href={item?.facebook}
+                        target="_blank"
+                        className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid"
+                      >
                         <LuFacebook className="h-6 w-6" />
                       </a>
                     </li>
                     <li>
-                      <a href={item?.twitter} target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
+                      <a
+                        href={item?.twitter}
+                        target="_blank"
+                        className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid"
+                      >
                         <LuTwitter className="h-6 w-6" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://snapchat.com" target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
+                      <a
+                        href="https://snapchat.com"
+                        target="_blank"
+                        className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid"
+                      >
                         <IoLogoSnapchat className="h-6 w-6" />
                       </a>
                     </li>
                   </ul>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex gap-4">
-        {[0, 1, 2].map((btnIndex) => (
-          <button
-            key={btnIndex}
-            type="button"
-            onClick={() => goToSlide(btnIndex)}
-            className={`h-5 w-5 transition-colors ${
-              isBtnActive(btnIndex) ? "bg-accent" : "bg-foreground"
-            }`}
-            aria-label={`Go to slide ${btnIndex + 1}`}
-          />
-        ))}
+        {/* Navigation Buttons */}
+        <div className="flex gap-4">
+          {[0, 1, 2].map((btnIndex) => (
+            <button
+              key={btnIndex}
+              type="button"
+              onClick={() => goToSlide(btnIndex)}
+              className={`h-5 w-5 transition-colors ${
+                isBtnActive(btnIndex) ? "bg-accent" : "bg-foreground"
+              }`}
+              aria-label={`Go to slide ${btnIndex + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
