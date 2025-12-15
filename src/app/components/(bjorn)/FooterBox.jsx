@@ -130,7 +130,6 @@ const FetchPosts = async () => {
             src={post.asset.url}
             alt="Recent Post"
             className="h-[120px] w-[120px] shrink-0 object-cover"
-            unoptimized={true}
             width={120}
             height={120}
           />

@@ -56,7 +56,7 @@ const FetchPosts = async ({ page }) => {
               alt={post.title}
               width={960}
               height={530}
-              unoptimized={true}
+              
               className={`h-[221px] w-full object-cover md:h-full md:max-h-[530px] ${
                 isEven ? "md:order-2" : ""
               }`}
