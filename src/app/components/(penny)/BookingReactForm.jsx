@@ -26,11 +26,21 @@ const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
     "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
   const errorStyle = "mt-1 text-xs text-red-400";
 
+  const checkAvailability = async (date, tableNumber) => {
+    const response = await fetch(`http://localhost:4000/reservations`);
+    const data = await response.json();
+    const tableBookings = data.filter((f) => f.tableNumber == tableNumber);
+    const available =
+      tableBookings.find((f) => Date.parse(f.date) == date.getTime()) ==
+      undefined;
+
+    return available;
+  };
+
   // when form is submitted, handleSubmit calls onSubmit function
   const onSubmit = async (data) => {
     try {
       setSuccess(false);
-      console.log(tables, selectedTable);
       // Validate selected table
       if (!selectedTable) {
         setError("table", {
@@ -42,7 +52,6 @@ const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
       // Validate number of guests
       const guests = Number(data.guests);
       const seats = tables.find((i) => i.id == selectedTable).type;
-      console.log(seats);
       if (!Number.isFinite(guests) || guests <= 0) {
         setError("guests", {
           message: "Please enter a valid number of guests",
@@ -65,16 +74,25 @@ const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
       // Add a small delay to show the submitting state
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
+      const available = await checkAvailability(data.date, selectedTable);
       // push data to api
-      const response = await fetch("http://localhost:4000/reservations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookingData),
-      });
-      // If response is not successful - show error message
-      if (!response.ok) {
+      if (available) {
+        const response = await fetch("http://localhost:4000/reservations", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(bookingData),
+        });
+        // If response is not successful - show error message
+        if (!response.ok) {
+          setError("root", {
+            message: "Booking submission failed. Please try again.",
+          });
+          return;
+        }
+      } else {
         setError("root", {
-          message: "Booking submission failed. Please try again.",
+          message:
+            "Selected table is not available at the chosen time. Please select another table or time.",
         });
         return;
       }
