@@ -2,7 +2,7 @@ import Image from "next/image";
 import BlogPostComments from "@/app/components/(penny)/BlogPostComments";
 import patternBg from "@/app/assets/bg/pattern_bg.jpg";
 import React from "react";
-import CommentForm from "@/app/components/(penny)/CommentForm";
+import CommentForm from "@/app/components/(penny)/CommentReactForm";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import SubHeader from "@/app/components/(Meleese)/SubHeader";
 
@@ -29,8 +29,6 @@ const BlogPost = async ({ params }) => {
           alt={post.title}
           width={1170}
           height={221}
-          // somehow only way to get images from localhost to work
-          unoptimized
           className="mb-4 h-[221px] w-full object-cover"
         />
 
