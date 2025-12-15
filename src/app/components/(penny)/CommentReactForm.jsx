@@ -88,7 +88,9 @@ const CommentReactForm = ({ id }) => {
                   // if input is empty - show error message
                   required: "Name is required",
                 })}
-                className={`${baseInput} border-foreground`}
+                className={`${baseInput} ${
+                  errors.name ? "border-red-500" : "border-foreground"
+                }`}
                 type="text"
                 placeholder="Your Name*"
               />
@@ -111,7 +113,9 @@ const CommentReactForm = ({ id }) => {
                     return true;
                   },
                 })}
-                className={`${baseInput} border-foreground`}
+                className={`${baseInput} ${
+                  errors.email ? "border-red-500" : "border-foreground"
+                }`}
                 type="text"
                 placeholder="Your Email*"
               />
@@ -129,7 +133,9 @@ const CommentReactForm = ({ id }) => {
                 required: "Comment is required",
               })}
               placeholder="Your Comment*"
-              className={`${baseInput} border-foreground h-32 min-h-80`}
+              className={`${baseInput} ${
+                errors.comment ? "border-red-500" : "border-foreground"
+              } h-32 min-h-80`}
             />
             {/* Error messages */}
             {errors.comment && (

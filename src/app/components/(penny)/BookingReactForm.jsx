@@ -22,7 +22,8 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
   } = useForm();
 
   // styles
-  const base = "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
+  const base =
+    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
   const errorStyle = "mt-1 text-xs text-red-400";
 
   // when form is submitted, handleSubmit calls onSubmit function
@@ -100,7 +101,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
   // rendering the component
 
   return (
-    <div className="mt-12 space-y-6">
+    <div className="mt-12 mb-24 space-y-6">
       <h2 className="text-xl font-bold tracking-wide uppercase">
         Book a table
       </h2>
@@ -126,7 +127,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
             type="text"
             placeholder="Your Name*"
             className={`${base} ${
-              errors.name ? "border-red-500" : "border-white"
+              errors.name ? "border-red-500" : "border-foreground"
             }`}
           />
           {errors.name && <p className={errorStyle}>{errors.name.message}</p>}
@@ -147,7 +148,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
             })}
             placeholder="Your Email*"
             className={`${base} ${
-              errors.email ? "border-red-500" : "border-white"
+              errors.email ? "border-red-500" : "border-foreground"
             }`}
           />
           {errors.email && <p className={errorStyle}>{errors.email.message}</p>}
@@ -163,7 +164,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
             })}
             readOnly
             className={`${base} ${
-              errors.table ? "border-red-500" : "border-white"
+              errors.table ? "border-red-500" : "border-foreground"
             }`}
             value={
               selectedTable ? `Table Number: ${selectedTable}` : "Table Number*"
@@ -180,7 +181,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
             type="number"
             placeholder="Number of Guests*"
             className={`${base} ${
-              errors.guests ? "border-red-500" : "border-white"
+              errors.guests ? "border-red-500" : "border-foreground"
             }`}
           />
           {errors.guests && (
@@ -211,7 +212,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
             type="tel"
             placeholder="Your Contact Number*"
             className={`${base} ${
-              errors.contact ? "border-red-500" : "border-white"
+              errors.contact ? "border-red-500" : "border-foreground"
             }`}
           />
           {errors.contact && (
@@ -223,7 +224,7 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
           <textarea
             {...register("comment")}
             placeholder="Your Comment"
-            className={`min-h-32 w-full border border-white bg-transparent px-4 py-3 text-sm outline-red-400 md:col-span-2`}
+            className={`border-foreground min-h-32 w-full border bg-transparent px-4 py-3 text-sm outline-red-400 md:col-span-2`}
           />
         </div>
 

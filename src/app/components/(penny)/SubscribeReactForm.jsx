@@ -95,7 +95,7 @@ const SubscribeReactForm = () => {
                 return true;
               },
             })}
-            className={`${errors.email ? "border-red-500" : "border-white"} border-b-2`}
+            className={`${errors.email ? "border-red-500" : "border-white"} min-w-96 border-b-2 bg-transparent text-white placeholder:text-white`}
             type="text"
             placeholder="Enter Your Email"
           />
