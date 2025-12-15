@@ -63,7 +63,7 @@ const FetchPosts = async ({ page }) => {
 
             {/* text column */}
             <div
-              className={`px-4 md:px-10 md:pt-12 md:pl-10 ${
+              className={`mb-8 px-4 md:px-10 md:pt-12 md:pl-10 ${
                 isEven ? "md:order-1" : ""
               }`}
             >
