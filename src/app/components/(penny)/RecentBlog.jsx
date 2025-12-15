@@ -37,7 +37,7 @@ const FetchPosts = async () => {
               className="mb-4 h-[221px] w-full object-cover md:mb-0 md:max-h-60"
             />
 
-            <div className="md:pt-12 md:pl-10">
+            <div className="md:pt-12">
               <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
                 {/* if post.title is longer than 16 then crop it and add "..." in the end */}
                 {post.title.length > 16
