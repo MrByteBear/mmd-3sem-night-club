@@ -61,7 +61,7 @@
   }
 
   .popoverOpen {
-    @apply max-lg:pointer-events-auto max-lg:visible max-lg:z-50 max-lg:grid max-lg:translate-y-0 max-lg:place-content-center max-lg:opacity-100;
+    @apply max-lg:pointer-events-auto max-lg:visible max-lg:z-50 max-lg:[display:grid!important] max-lg:translate-y-0 max-lg:place-items-center max-lg:opacity-100;
   }
 
   .hoverContainer {

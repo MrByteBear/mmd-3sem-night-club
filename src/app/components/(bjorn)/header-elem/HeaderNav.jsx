@@ -42,7 +42,7 @@ export default function HeaderNav() {
             >
               <LuX className="h-8 w-8 stroke-4" />
             </button>
-            <ul className="flex gap-6 group-[.popoverOpen]:grid group-[.popoverOpen]:place-items-center">
+            <ul className="flex gap-6 popoverOpen">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
