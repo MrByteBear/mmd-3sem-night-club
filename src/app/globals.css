@@ -67,7 +67,7 @@
   .hoverContainer {
     /* Apply this, alongside "group" for the parent hover container*/
     /* There must only be one parent hover container, the rest can be children and children of children */
-    @apply relative;
+    @apply relative overflow-hidden;
   } 
 
   .hoverChild {
