@@ -101,6 +101,17 @@ export default function GalleryClient({ data }) {
       {isOpen && activeIndex !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Gallery image viewer"
+          tabIndex={-1} // takes the focus when it appears, priority outside of normal tab order
+          ref={(node) => node && node.focus()}   
+          // keyboard navigation for esc, left and right
+          onKeyDown={(e) => {
+            if (e.key === "Escape") close();
+            if (e.key === "ArrowLeft") showPrev();
+            if (e.key === "ArrowRight") showNext();
+          }}
           onClick={close}
         >
                 {/* LEFT ARROW */}
@@ -109,7 +120,7 @@ export default function GalleryClient({ data }) {
                     e.stopPropagation();
                     showPrev();
                   }}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 p-4 border border-white hover:bg-white hover:text-black transition"
+                  className="absolute left-6 top-1/2 -translate-y-1/2 p-4 border border-white hover:bg-white hover:text-black transition focus-visible:outline focus-visible:outline-accent"
                 >
                   <FaChevronLeft size={20} />
                 </button>
