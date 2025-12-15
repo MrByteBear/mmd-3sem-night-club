@@ -1,5 +1,4 @@
 import DataFetcher from "@/app/components/(bjorn)/data-fetcher/DataFetcher";
-import DataFetcherSSR from "@/app/components/(bjorn)/server-fetch/ServerFetch";
 
 import GalleryContent from "./GalleryContent";
 

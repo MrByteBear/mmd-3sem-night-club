@@ -1,4 +1,4 @@
-import DataFetcherSSR from "@/app/components/(bjorn)/server-fetch/ServerFetch";
+import DataFetcher from "@/app/components/(bjorn)/data-fetcher/DataFetcher";
 import Image from "next/image";
 
 function GalleryView({ data, displayFull = false }) {
@@ -120,10 +120,10 @@ function GalleryView({ data, displayFull = false }) {
 
 export default function ClubGallery({ displayFull = false }) {
   return (
-    <DataFetcherSSR endpoint="/gallery">
+    <DataFetcher endpoint="gallery">
       {(endpointData) => (
         <GalleryView data={endpointData} displayFull={displayFull} />
       )}
-    </DataFetcherSSR>
+    </DataFetcher>
   );
 }
