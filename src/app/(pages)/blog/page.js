@@ -12,7 +12,7 @@ export default async function Blog({ searchParams }) {
       <SubHeader title="Blog" />
 
       <main
-        className="col-start-1 col-end-4 grid bg-cover bg-center"
+        className="bg-cover bg-center"
         style={{ backgroundImage: `url(${patternBg.src})` }}
       >
         <Suspense fallback={<div>Loading blog posts...</div>}>
