@@ -27,9 +27,9 @@ const BlogPost = async ({ params }) => {
         <Image
           src={post.asset.url}
           alt={post.title}
-          width={1170}
-          height={221}
-          className="mb-4 h-[221px] w-full object-cover"
+          width={1440}
+          height={608}
+          className="mb-4 h-[221px] w-full object-cover md:h-[608px]"
         />
 
         <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
