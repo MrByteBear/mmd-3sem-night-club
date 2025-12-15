@@ -4,7 +4,7 @@ import patternBg from "@/app/assets/bg/pattern_bg.jpg";
 import React from "react";
 import CommentForm from "@/app/components/(penny)/CommentReactForm";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
-import SubHeader from "@/app/components/(Meleese)/SubHeader";
+import SubHeader from "@/app/components/(meleese)/SubHeader";
 
 const BlogPost = async ({ params }) => {
   const { id } = await params;

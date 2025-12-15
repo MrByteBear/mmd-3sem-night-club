@@ -1,4 +1,4 @@
-import SubHeader from "@/app/components/(Meleese)/SubHeader";
+import SubHeader from "@/app/components/(meleese)/SubHeader";
 import HeaderNav from "@/app/components/(Bjorn)/header-elem/HeaderNav";
 import ContactReactForm from "@/app/components/(penny)/ContactReactForm";
 

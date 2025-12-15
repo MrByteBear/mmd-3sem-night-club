@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
+import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const CommentForm = ({ id }) => {
   const router = useRouter();

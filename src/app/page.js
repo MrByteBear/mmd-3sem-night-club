@@ -4,9 +4,9 @@ import Image from "next/image";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
-import ClubGalleryAnimated from "./components/(Meleese)/gallery/ClubGalleryAnimated";
+import ClubGalleryAnimated from "./components/(meleese)/gallery/ClubGalleryAnimated";
 import MusicPlayer from "@/app/components/(bjorn)/music-player/MusicPlayer";
-import VideoPlayer from "./components/(Meleese)/VideoPlayer";
+import VideoPlayer from "./components/(meleese)/VideoPlayer";
 import WelcomeSectionImages from "./components/(penny)/WelcomeSectionImages";
 import RecentBlog from "./components/(penny)/RecentBlog";
 import SubscribeReactForm from "./components/(penny)/SubscribeReactForm";
@@ -23,8 +23,8 @@ import HeroBanner from "./components/(bjorn)/hero-banner/HeroBanner";
 export default function Home() {
   return (
     <>
-      <HeroBanner/>
-      <HeaderNav/>
+      <HeroBanner />
+      <HeaderNav />
       <main style={{ backgroundImage: `url(${MainBg.src})` }}>
         <SectionElem title="Welcome in nightclub" className="py-28">
           <div className="mt-8 flex gap-8 max-lg:flex-wrap max-lg:justify-center">
@@ -73,7 +73,11 @@ export default function Home() {
         <SectionElem title="Latest Videos">
           <VideoPlayer />
         </SectionElem>
-        <SectionElem variant="breakout" className="my-12 bg-cover bg-center" backgroundImage={FooterBg.src}>
+        <SectionElem
+          variant="breakout"
+          className="my-12 bg-cover bg-center"
+          backgroundImage={FooterBg.src}
+        >
           <TestimonialsElem />
         </SectionElem>
         <SectionElem title="Recent blog">

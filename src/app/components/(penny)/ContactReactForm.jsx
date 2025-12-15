@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
+import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const ContactReactForm = () => {
   const [success, setSuccess] = useState(false);

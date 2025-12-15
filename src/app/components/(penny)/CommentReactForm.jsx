@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 // component imports
-import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
+import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const CommentReactForm = ({ id }) => {
   const router = useRouter();

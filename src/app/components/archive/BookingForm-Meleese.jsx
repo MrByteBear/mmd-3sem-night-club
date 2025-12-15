@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import DatePicker from "@/app/components/archive/DatePicker-Meleese";
-import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
-
+import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 export default function BookingForm({ selectedTable }) {
   const [errors, setErrors] = useState({});
@@ -59,13 +58,12 @@ export default function BookingForm({ selectedTable }) {
     setTimeout(() => setSuccess(false), 3000);
   }
 
-    // base styling for input fields
-  const base =
-    "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
+  // base styling for input fields
+  const base = "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
 
   return (
     <div className="mt-12 space-y-6">
-      <h2 className="text-xl font-bold uppercase tracking-wide">
+      <h2 className="text-xl font-bold tracking-wide uppercase">
         Book a table
       </h2>
 
@@ -82,7 +80,6 @@ export default function BookingForm({ selectedTable }) {
             <p className="mt-1 text-xs text-red-400">{errors.name}</p>
           )}
         </div>
-
 
         <div>
           <input
@@ -106,16 +103,13 @@ export default function BookingForm({ selectedTable }) {
               errors.table ? "border-red-500" : "border-white"
             }`}
             value={
-              selectedTable
-                ? `Table Number: ${selectedTable}`
-                : "Table Number*"
+              selectedTable ? `Table Number: ${selectedTable}` : "Table Number*"
             }
           />
           {errors.table && (
             <p className="mt-1 text-xs text-red-400">{errors.table}</p>
           )}
         </div>
-
 
         <div>
           <input
@@ -131,12 +125,9 @@ export default function BookingForm({ selectedTable }) {
           )}
         </div>
 
-
-       <div className="w-full">
-            <DatePicker error={errors.date} />
+        <div className="w-full">
+          <DatePicker error={errors.date} />
         </div>
-
-
 
         <div>
           <input
@@ -155,13 +146,12 @@ export default function BookingForm({ selectedTable }) {
         <div className="md:col-span-2">
           <textarea
             name="comment"
-            className={`md:col-span-2 bg-transparent border px-4 py-3 text-sm outline-red-400 w-full min-h-32 border-white`}
+            className={`min-h-32 w-full border border-white bg-transparent px-4 py-3 text-sm outline-red-400 md:col-span-2`}
             placeholder="Your Comment"
           />
         </div>
 
         <SubmitButton />
-        
 
         {/* <div className="md:col-span-2 flex justify-end">
           <button
@@ -171,14 +161,12 @@ export default function BookingForm({ selectedTable }) {
             Reserve
           </button>
         </div> */}
-              {success && (
-              <p className="text-white text-sm font-medium  md:col-span-2 flex justify-end">
-                Your booking has been sent! 🎉
-              </p>
-            )}
+        {success && (
+          <p className="flex justify-end text-sm font-medium text-white md:col-span-2">
+            Your booking has been sent! 🎉
+          </p>
+        )}
       </form>
-      
     </div>
   );
-
 }
