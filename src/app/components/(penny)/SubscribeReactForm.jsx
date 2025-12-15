@@ -45,6 +45,7 @@ const SubscribeReactForm = () => {
         body: JSON.stringify(data),
       });
 
+      // if response is not successful - show error message
       if (!response.ok) {
         setError("root", {
           message: "Subscription failed. Please try again.",
@@ -118,6 +119,7 @@ const SubscribeReactForm = () => {
             {errors.email.message}
           </p>
         )}
+        {/* error message for whole form */}
         {errors.root && (
           <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
             {errors.root.message}
