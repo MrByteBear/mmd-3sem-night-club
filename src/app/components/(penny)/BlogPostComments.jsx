@@ -39,7 +39,7 @@ const FetchComments = async ({ id }) => {
 
     return (
       // each comment
-      <li key={post.id} className="mb-[54px] pb-8">
+      <li key={post.id} className="mb-[48px] pb-8">
         <h3 className="mb-6 text-[18px] font-medium tracking-[0.36px]">
           {post.name} -
           <span className="text-accent text-[16px] tracking-[0.32px]">

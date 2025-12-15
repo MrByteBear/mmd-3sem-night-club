@@ -78,9 +78,7 @@ const CommentReactForm = ({ id }) => {
 
   return (
     <div>
-      <h2 className="mt-[86px] mb-11 text-[32px] font-bold uppercase">
-        Leave a comment
-      </h2>
+      <h2 className="mb-11 text-[32px] font-bold uppercase">Leave a comment</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-8 mb-8 flex flex-col gap-4 md:gap-6">
           <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-6">
