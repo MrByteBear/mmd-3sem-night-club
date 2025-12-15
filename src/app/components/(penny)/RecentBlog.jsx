@@ -12,12 +12,14 @@ const RecentBlog = () => {
   );
 };
 
+// fetches blog posts
 const FetchPosts = async () => {
   const url = "http://localhost:4000/blogposts";
   const response = await fetch(url);
   const posts = await response.json();
   const postsList = posts.slice(0, 3); // Get only the 3 most recent posts
 
+  // map through posts and return article for each post
   return Promise.all(
     postsList.map(async (post) => {
       // Fetch comments to get count for each post
@@ -27,6 +29,7 @@ const FetchPosts = async () => {
       const comments = await commentsResponse.json();
       const commentCount = Array.isArray(comments) ? comments.length : 0;
 
+      // render article
       return (
         <article key={post.id} className="grid">
           <Link href={`/blog-post/${post.id}`}>
