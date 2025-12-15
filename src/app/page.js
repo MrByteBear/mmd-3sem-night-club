@@ -2,14 +2,11 @@
 import Image from "next/image";
 // Components
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
-import FooterBox from "@/app/components/(bjorn)/footer-elem/FooterBox";
 import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
-import ClubGallery from "@/app/components/(bjorn)/club-gallery/ClubGallery";
 import ClubGalleryAnimated from "./components/(Meleese)/gallery/ClubGalleryAnimated";
 import MusicPlayer from "@/app/components/(bjorn)/music-player/MusicPlayer";
 import VideoPlayer from "./components/(Meleese)/VideoPlayer";
-import Subscribe from "./components/(Meleese)/Subscribe";
 import WelcomeSectionImages from "./components/(penny)/WelcomeSectionImages";
 import RecentBlog from "./components/(penny)/RecentBlog";
 import SubscribeReactForm from "./components/(penny)/SubscribeReactForm";
