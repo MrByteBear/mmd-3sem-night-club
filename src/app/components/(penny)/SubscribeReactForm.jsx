@@ -14,6 +14,9 @@ const SubscribeReactForm = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  // styling
+  const errorStyle = "mt-1 text-xs text-red-400";
+
   // when form is submitted, handleSubmit calls onSubmit function
   const onSubmit = async (data) => {
     try {
@@ -70,7 +73,7 @@ const SubscribeReactForm = () => {
 
   return (
     <div className="col-start-1 col-end-4 mt-[95px] mb-[18px] flex w-full flex-col items-center justify-center bg-black pt-16 text-white">
-      <h1 className="tracking-widest uppercase">
+      <h1 className="font-medium tracking-widest uppercase">
         want the latest night club news
       </h1>
       <h2 className="-tracking-wider">
@@ -85,9 +88,9 @@ const SubscribeReactForm = () => {
               // if input is empty - show error message
               required: "Email is required",
               validate: (value) => {
-                // input must include @ - if not show error message
-                if (!value.includes("@")) {
-                  return "Email must include @";
+                // input must live up to expectations - if not show error message
+                if (!/^\S+@\S+\.\S+$/.test(value)) {
+                  return "Please enter a valid email address";
                 }
                 return true;
               },
@@ -114,17 +117,10 @@ const SubscribeReactForm = () => {
           </p>
         )}
         {/* Error messages */}
-        {errors.email && (
-          <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-            {errors.email.message}
-          </p>
-        )}
+        {errors.email && <p className={errorStyle}>{errors.email.message}</p>}
+
         {/* error message for whole form */}
-        {errors.root && (
-          <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-            {errors.root.message}
-          </p>
-        )}
+        {errors.root && <p className={errorStyle}>{errors.root.message}</p>}
       </form>
     </div>
   );
