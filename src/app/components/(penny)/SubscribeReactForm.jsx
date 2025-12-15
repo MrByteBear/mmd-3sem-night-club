@@ -14,6 +14,9 @@ const SubscribeReactForm = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  // styling
+  const errorStyle = "mt-1 text-xs text-red-400";
+
   // when form is submitted, handleSubmit calls onSubmit function
   const onSubmit = async (data) => {
     try {
@@ -114,17 +117,10 @@ const SubscribeReactForm = () => {
           </p>
         )}
         {/* Error messages */}
-        {errors.email && (
-          <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-            {errors.email.message}
-          </p>
-        )}
+        {errors.email && <p className={errorStyle}>{errors.email.message}</p>}
+
         {/* error message for whole form */}
-        {errors.root && (
-          <p className="mt-4 text-center text-sm font-semibold tracking-wide text-red-500 uppercase">
-            {errors.root.message}
-          </p>
-        )}
+        {errors.root && <p className={errorStyle}>{errors.root.message}</p>}
       </form>
     </div>
   );
