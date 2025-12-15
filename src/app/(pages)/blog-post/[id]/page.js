@@ -23,27 +23,31 @@ const BlogPost = async ({ params }) => {
       <HeaderNav />
       <SubHeader title="blog post" />
 
-      <main style={{ backgroundImage: `url(${patternBg.src})` }}>
+      <main
+        style={{ backgroundImage: `url(${patternBg.src})` }}
+        className="max-md:grid-cols-subgrid"
+      >
         <Image
           src={post.asset.url}
           alt={post.title}
           width={1440}
           height={608}
-          className="mb-4 h-[221px] w-full object-cover md:h-[608px]"
+          className="mb-4 grid h-[221px] w-full object-cover max-md:col-start-1 max-md:col-end-4 md:h-[608px]"
         />
+        <div className="pl-1">
+          <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
+            {post.title}
+          </h2>
+          <p className="text-accent mt-4 font-medium tracking-[0.36px]">
+            BY: {post.author} / {commentCount} Comments
+          </p>
+          <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px] md:text-[18px]">
+            {post.content}
+          </p>
 
-        <h2 className="mt-4 text-2xl font-medium tracking-[0.48px] uppercase">
-          {post.title}
-        </h2>
-        <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
-          BY: {post.author} / {commentCount} Comments / 16 Nov 2018
-        </p>
-        <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px] md:text-[18px]">
-          {post.content}
-        </p>
-
-        <BlogPostComments id={id} commentCount={commentCount} />
-        <CommentForm id={id} />
+          <BlogPostComments id={id} commentCount={commentCount} />
+          <CommentForm id={id} />
+        </div>
       </main>
     </div>
   );

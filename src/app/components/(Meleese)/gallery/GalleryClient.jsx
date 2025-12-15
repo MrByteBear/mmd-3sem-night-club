@@ -74,7 +74,6 @@ export default function GalleryClient({ data }) {
                     alt={item?.description || "Gallery image"}
                     width={970}
                     height={560}
-                    unoptimized
                     className="h-[221px] w-full object-cover md:h-full md:max-h-[530px]"
                   />
 
@@ -145,7 +144,7 @@ export default function GalleryClient({ data }) {
               alt={data[activeIndex]?.description || "Gallery image"}
               width={1200}
               height={700}
-              unoptimized
+              
               className="w-full h-auto object-cover"
             />
 

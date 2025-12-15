@@ -31,6 +31,17 @@ export default function Paginator({ totalPages }) {
           </button>
         </li>
       ))}
+
+      {/* Next page button */}
+      <li>
+        <button
+          onClick={() => handleClick(currentPage + 1)}
+          disabled={currentPage >= totalPages}
+          className={`cursor-pointer ${currentPage >= totalPages ? "cursor-not-allowed opacity-50" : ""}`}
+        >
+          Next
+        </button>
+      </li>
     </>
   );
 }

@@ -26,17 +26,17 @@ const DateInput = forwardRef(function DateInput(
         onClick={onClick}
         value={value}
         placeholder="Select Date"
-        className={`w-full border bg-transparent px-4 py-3 text-sm outline-red-400 ${
-          error ? "border-red-500" : "border-white"
+        className={`text-foreground placeholder:text-foreground w-full border bg-transparent px-3 py-[18px] md:px-6 md:py-8 ${
+          error ? "border-red-500" : "border-foreground"
         }`}
       />
       <button
         type="button"
         onClick={onClick}
-        className="absolute top-1/2 right-3 -translate-y-1/2"
+        className="absolute top-1/2 right-3 -translate-y-1/2 md:right-6"
       >
         {/* React icon to make the datepicker open when clicking the calendar */}
-        <FaCalendarAlt className="h-4 w-4 text-gray-200" />
+        <FaCalendarAlt className="text-foreground h-4 w-4" />
       </button>
     </div>
   );

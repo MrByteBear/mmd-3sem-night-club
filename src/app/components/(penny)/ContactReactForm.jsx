@@ -16,7 +16,9 @@ const ContactReactForm = () => {
   } = useForm();
 
   // Base input styling
-  const base = "bg-transparent border px-4 py-3 text-sm outline-red-400 w-full";
+  const base =
+    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
+
   const errorStyle = "mt-1 text-xs text-red-400";
 
   // when form is submitted, handleSubmit calls onSubmit function
@@ -114,7 +116,7 @@ const ContactReactForm = () => {
               required: "Comment is required",
             })}
             placeholder="Your Comment*"
-            className={`min-h-32 w-full border bg-transparent px-4 py-3 text-sm outline-red-400 ${
+            className={`min-h-32 md:h-96 ${base} ${
               errors.comment ? "border-red-500" : "border-white"
             }`}
           />

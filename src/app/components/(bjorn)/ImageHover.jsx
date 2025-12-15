@@ -54,7 +54,7 @@ export default function ImageHover({
         alt={imgAlt || "Placeholder img of cat"}
         width={imgWidth || 570}
         height={imgHeight || 403}
-        unoptimized
+        
         className={`${imgClass}`}
       />
       <div className="hoverChild group">
