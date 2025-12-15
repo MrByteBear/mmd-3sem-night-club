@@ -19,7 +19,6 @@ export default function HeaderNav() {
     { href: "/blog", text: "Blog" },
     { href: "/tables", text: "Book table" },
     { href: "/contact", text: "Contact" },
-    { href: "#", text: "Log in" },
   ];
 
   return (
