@@ -73,7 +73,7 @@ const SubscribeReactForm = () => {
 
   return (
     <div className="col-start-1 col-end-4 mt-[95px] mb-[18px] flex w-full flex-col items-center justify-center bg-black pt-16 text-white">
-      <h1 className="tracking-widest uppercase">
+      <h1 className="font-medium tracking-widest uppercase">
         want the latest night club news
       </h1>
       <h2 className="-tracking-wider">
