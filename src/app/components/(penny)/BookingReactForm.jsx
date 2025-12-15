@@ -9,6 +9,11 @@ import DatePicker from "@/app/components/(penny)/ReactDatePicker";
 import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
+  // styles
+  const base =
+    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
+  const errorStyle = "mt-1 text-xs text-red-400";
+
   const [success, setSuccess] = useState(false);
 
   // useForm hook to manage form state and validation
@@ -21,15 +26,14 @@ const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  // styles
-  const base =
-    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
-  const errorStyle = "mt-1 text-xs text-red-400";
-
+  // function to check if selected date is available for the selected table
   const checkAvailability = async (date, tableNumber) => {
     const response = await fetch(`http://localhost:4000/reservations`);
     const data = await response.json();
+
+    // filter bookings for the selected table
     const tableBookings = data.filter((f) => f.tableNumber == tableNumber);
+    // check if any booking matches the selected date - if so, return false
     const available =
       tableBookings.find((f) => Date.parse(f.date) == date.getTime()) ==
       undefined;
