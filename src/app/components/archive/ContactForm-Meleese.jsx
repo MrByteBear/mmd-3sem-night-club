@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
+import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const ContactForm = () => {
   const [errors, setErrors] = useState({});
@@ -25,21 +25,22 @@ const ContactForm = () => {
     else if (!/^\S+@\S+\.\S+$/.test(email))
       newErrors.email = "Please enter a valid email address";
 
-
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
-
   }
 
-//   to make the input tags to take tailwind classnames, I created a base variable
+  //   to make the input tags to take tailwind classnames, I created a base variable
   const base =
     "bg-transparent border px-4 py-3 text-sm  outline-red-400 w-full";
 
-    return ( 
+  return (
     <div>
-        <form className="flex flex-col gap-4 max-w-md m-auto" onSubmit={handleSubmit}>
-       <div>
+      <form
+        className="m-auto flex max-w-md flex-col gap-4"
+        onSubmit={handleSubmit}
+      >
+        <div>
           <input
             name="name"
             className={`${base} ${
@@ -48,10 +49,10 @@ const ContactForm = () => {
             placeholder="Your Name*"
           />
           {errors.name && (
-            <p className="text-xs text-red-400 mt-1">{errors.name}</p>
+            <p className="mt-1 text-xs text-red-400">{errors.name}</p>
           )}
         </div>
-        
+
         <div>
           <input
             name="email"
@@ -62,17 +63,17 @@ const ContactForm = () => {
             placeholder="Your Email*"
           />
           {errors.email && (
-            <p className="text-xs text-red-400 mt-1">{errors.email}</p>
+            <p className="mt-1 text-xs text-red-400">{errors.email}</p>
           )}
         </div>
 
-        <textarea 
-        className=" bg-transparent border border-white px-4 py-3 text-sm outline-red-400 min-h-32" 
-        placeholder="Your Comment" 
+        <textarea
+          className="min-h-32 border border-white bg-transparent px-4 py-3 text-sm outline-red-400"
+          placeholder="Your Comment"
         />
 
         <SubmitButton />
-{/* 
+        {/* 
         <div className="md:col-span-2 flex justify-end">
           <button
             type="submit"
@@ -81,10 +82,9 @@ const ContactForm = () => {
             Send
           </button>
         </div> */}
-          </form>
+      </form>
+    </div>
+  );
+};
 
-    </div>  
-    );
-}
- 
 export default ContactForm;

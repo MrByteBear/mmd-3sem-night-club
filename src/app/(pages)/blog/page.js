@@ -1,7 +1,7 @@
 import BlogList from "@/app/components/(penny)/BlogList";
 import patternBg from "@/app/assets/bg/pattern_bg.jpg";
 import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
-import SubHeader from "@/app/components/(Meleese)/SubHeader";
+import SubHeader from "@/app/components/(meleese)/SubHeader";
 import { Suspense } from "react";
 
 export default async function Blog({ searchParams }) {
@@ -17,7 +17,6 @@ export default async function Blog({ searchParams }) {
       >
         <Suspense fallback={<div>Loading blog posts...</div>}>
           <BlogList searchParams={params} />
-      
         </Suspense>
       </main>
     </div>

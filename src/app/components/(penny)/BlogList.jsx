@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Paginator from "./Paginator";
-import ReadMore from "@/app/components/(Meleese)/buttons/ReadMore";
+import ReadMore from "@/app/components/(meleese)/buttons/ReadMore";
 
 // Fetch all posts once
 const url = "http://localhost:4000/blogposts";

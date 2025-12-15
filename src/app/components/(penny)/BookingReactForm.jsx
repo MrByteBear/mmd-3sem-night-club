@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 // Component imports
 import DatePicker from "@/app/components/(penny)/ReactDatePicker";
-import SubmitButton from "@/app/components/(Meleese)/buttons/Submit";
+import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const BookingReactForm = ({ selectedTable, onTableReset }) => {
   const [success, setSuccess] = useState(false);

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Tables from "@/app/components/(Meleese)/Tables";
+import Tables from "@/app/components/(meleese)/Tables";
 import BookingForm from "@/app/components/(penny)/BookingReactForm";
 // import BookingForm from "@/app/components/(Meleese)/BookingForm";
 
-import SubHeader from "@/app/components/(Meleese)/SubHeader";
+import SubHeader from "@/app/components/(meleese)/SubHeader";
 import HeaderNav from "@/app/components/(Bjorn)/header-elem/HeaderNav";
 
 const TABLES = [
