@@ -1,7 +1,10 @@
 // this component is used in the WelcomeSection on the homepage
 
+// component imports
 import CornerElem from "../(bjorn)/corner-elem/CornerElem";
 import LogoGuy from "@/app/assets/icon/logoGuy.svg";
+
+// icon imports
 import { LuMartini } from "react-icons/lu";
 import { PiBowlFood } from "react-icons/pi";
 
@@ -9,7 +12,9 @@ import Image from "next/image";
 // recieves header, text and children as props
 const WelcomeSectionImages = ({ header, text, children, variant }) => {
   const renderIcon = () => {
+    // makes sure header is lowercase for easier comparison
     const headerLower = header?.toLowerCase();
+    // return icon based on header prop
     if (headerLower === "restaurant") {
       return <PiBowlFood className="text-accent" size={40} />;
     } else if (headerLower === "bar") {
