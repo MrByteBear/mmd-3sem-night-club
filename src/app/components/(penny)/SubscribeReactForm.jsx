@@ -85,9 +85,9 @@ const SubscribeReactForm = () => {
               // if input is empty - show error message
               required: "Email is required",
               validate: (value) => {
-                // input must include @ - if not show error message
-                if (!value.includes("@")) {
-                  return "Email must include @";
+                // input must live up to expectations - if not show error message
+                if (!/^\S+@\S+\.\S+$/.test(value)) {
+                  return "Please enter a valid email address";
                 }
                 return true;
               },
