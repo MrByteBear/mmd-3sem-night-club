@@ -1,11 +1,14 @@
+// this is a rework of the DatePicker component to make it work with react-hook-form
 "use client";
 
+// React imports
 import { forwardRef } from "react";
 import DatePicker from "react-datepicker";
 import { FaCalendarAlt } from "react-icons/fa";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
+// import danish locale for datepicker
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import { da } from "date-fns/locale/da";
 registerLocale("da", da);
