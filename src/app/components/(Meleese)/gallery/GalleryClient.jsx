@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ReadMore from "../buttons/ReadMore";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
+import Link from "next/link";
 
 // only 2 rows this time with 4 and 3 images respectively
 const row_configuration = [
@@ -17,7 +17,6 @@ export default function GalleryClient({ data }) {
   // null = no popup open
   const [activeIndex, setActiveIndex] = useState(null);
 
-
   const close = () => setActiveIndex(null);
   const isOpen = activeIndex !== null;
 
@@ -28,9 +27,7 @@ export default function GalleryClient({ data }) {
     );
 
   const showNext = () =>
-    setActiveIndex((prev) =>
-      prev === null ? null : (prev + 1) % data.length,
-    );
+    setActiveIndex((prev) => (prev === null ? null : (prev + 1) % data.length));
 
   let offset = 0;
 
@@ -40,9 +37,8 @@ export default function GalleryClient({ data }) {
     "by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, " +
     "you need to be sure there isn't anything embarrassing hidden in the middle of text.";
 
-
   return (
-    <div className="col-[1/4] grid mb-12">
+    <div className="col-[1/4] mb-12 grid">
       {/* GALLERY GRID with map */}
       {row_configuration.map((row, rowIndex) => {
         const images = data.slice(offset, offset + row.count);
@@ -57,7 +53,11 @@ export default function GalleryClient({ data }) {
             initial={{ x: -80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ amount: 0.3 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: rowIndex * 0.15 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: rowIndex * 0.15,
+            }}
           >
             {images.map((item, i) => {
               const globalIndex = startIndex + i;
@@ -66,7 +66,7 @@ export default function GalleryClient({ data }) {
                 <button
                   key={item?.id ?? `${rowIndex}-${i}`}
                   type="button"
-                  className="relative h-full w-full group"
+                  className="group relative h-full w-full"
                   onClick={() => setActiveIndex(globalIndex)}
                 >
                   <Image
@@ -80,14 +80,8 @@ export default function GalleryClient({ data }) {
                   {/* darken on hover + triangles */}
                   <div className="pointer-events-none absolute inset-0 bg-black/0 transition group-hover:bg-black/50" />
                   <div className="pointer-events-none">
-                    <div
-                      className="absolute left-0 top-0 h-10 w-10 bg-accent opacity-0 transition
-                                 group-hover:opacity-100 [clip-path:polygon(0_0,100%_0,0_100%)]"
-                    />
-                    <div
-                      className="absolute bottom-0 right-0 h-10 w-10 bg-accent opacity-0 transition
-                                 group-hover:opacity-100 [clip-path:polygon(100%_0,100%_100%,0_100%)]"
-                    />
+                    <div className="bg-accent absolute top-0 left-0 h-10 w-10 opacity-0 transition [clip-path:polygon(0_0,100%_0,0_100%)] group-hover:opacity-100" />
+                    <div className="bg-accent absolute right-0 bottom-0 h-10 w-10 opacity-0 transition [clip-path:polygon(100%_0,100%_100%,0_100%)] group-hover:opacity-100" />
                   </div>
                 </button>
               );
@@ -104,7 +98,7 @@ export default function GalleryClient({ data }) {
           aria-modal="true"
           aria-label="Gallery image viewer"
           tabIndex={-1} // takes the focus when it appears, priority outside of normal tab order
-          ref={(node) => node && node.focus()}   
+          ref={(node) => node && node.focus()}
           // keyboard navigation for esc, left and right
           onKeyDown={(e) => {
             if (e.key === "Escape") close();
@@ -113,27 +107,27 @@ export default function GalleryClient({ data }) {
           }}
           onClick={close}
         >
-                {/* LEFT ARROW */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    showPrev();
-                  }}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 p-4 border border-white hover:bg-white hover:text-black transition focus-visible:outline focus-visible:outline-accent"
-                >
-                  <FaChevronLeft size={20} />
-                </button>
+          {/* LEFT ARROW */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              showPrev();
+            }}
+            className="focus-visible:outline-accent absolute top-1/2 left-6 -translate-y-1/2 border border-white p-4 transition hover:bg-white hover:text-black focus-visible:outline"
+          >
+            <FaChevronLeft size={20} />
+          </button>
 
-                {/* RIGHT ARROW */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    showNext();
-                  }}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 p-4 border border-white hover:bg-white hover:text-black transition"
-                >
-                  <FaChevronRight size={20} />
-                </button>
+          {/* RIGHT ARROW */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              showNext();
+            }}
+            className="absolute top-1/2 right-6 -translate-y-1/2 border border-white p-4 transition hover:bg-white hover:text-black"
+          >
+            <FaChevronRight size={20} />
+          </button>
           <div
             className="relative w-full max-w-3xl bg-black"
             onClick={(e) => e.stopPropagation()}
@@ -144,18 +138,19 @@ export default function GalleryClient({ data }) {
               alt={data[activeIndex]?.description || "Gallery image"}
               width={1200}
               height={700}
-              
-              className="w-full h-auto object-cover"
+              className="h-auto w-full object-cover"
             />
 
             <div className="border-t border-zinc-700 p-6 md:p-8">
-              <h2 className="mb-3 text-xl font-semibold uppercase tracking-wide">
+              <h2 className="mb-3 text-xl font-semibold tracking-wide uppercase">
                 Night Club Party
               </h2>
-              <p className="mb-6 text-xs leading-relaxed text-foreground/80">
+              <p className="text-foreground/80 mb-6 text-xs leading-relaxed">
                 {hardcodedText}
               </p>
-              <ReadMore />
+              <Link href="/blog">
+                <ReadMore />
+              </Link>
             </div>
           </div>
         </div>

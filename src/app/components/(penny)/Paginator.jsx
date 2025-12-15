@@ -39,7 +39,7 @@ export default function Paginator({ totalPages }) {
           disabled={currentPage >= totalPages}
           className={`cursor-pointer ${currentPage >= totalPages ? "cursor-not-allowed opacity-50" : ""}`}
         >
-          Next
+          Next &gt;
         </button>
       </li>
     </>

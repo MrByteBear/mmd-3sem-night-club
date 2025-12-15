@@ -8,11 +8,6 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
 
-// import danish locale for datepicker
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-import { da } from "date-fns/locale/da";
-registerLocale("da", da);
-
 // Use the DatePicker library to use in our BookingForm component
 const DateInput = forwardRef(function DateInput(
   { value, onClick, error },
@@ -49,7 +44,6 @@ export default function DatePickerField({ value, onChange, error }) {
   return (
     <div className="w-full">
       <DatePicker
-        locale="da"
         selected={value}
         onChange={onChange}
         customInput={<DateInput error={error} />}
@@ -57,8 +51,7 @@ export default function DatePickerField({ value, onChange, error }) {
         wrapperClassName="w-full"
         // this makes the popup align under the input
         popperClassName="z-50"
-        showTimeSelect
-        dateFormat="Pp"
+        dateFormat="dd-MM-yyyy"
       />
 
       {error && <p className="mt-1 text-xs text-red-400">{error}</p>}

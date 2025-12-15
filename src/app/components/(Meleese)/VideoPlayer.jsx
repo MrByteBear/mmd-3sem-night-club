@@ -21,10 +21,10 @@ export default function VideoPlayer() {
   }
 
   return (
-    <div className="mb-[26px] flex flex-col items-center gap-4">
+    <div className="mb-[26px] flex min-h-80 flex-col items-center gap-4">
       {/* Needs Full bleed when screen is small */}
 
-      <div className="h-100 w-full max-w-3xl overflow-hidden rounded-lg shadow-lg sm:col-start-1 sm:col-end-4">
+      <div className="min-h-32 w-full max-w-3xl overflow-hidden rounded-lg shadow-lg sm:col-start-1 sm:col-end-4 md:h-100">
         <video
           key={index}
           src={videos[index]}

@@ -8,7 +8,12 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from "@/app/components/(penny)/ReactDatePicker";
 import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
-const BookingReactForm = ({ selectedTable, onTableReset }) => {
+const BookingReactForm = ({ tables, selectedTable, onTableReset }) => {
+  // styles
+  const base =
+    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
+  const errorStyle = "mt-1 text-xs text-red-400";
+
   const [success, setSuccess] = useState(false);
 
   // useForm hook to manage form state and validation
@@ -21,16 +26,25 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  // styles
-  const base =
-    "w-full border px-3 py-[18px] md:px-6 md:py-8 bg-transparent text-foreground placeholder:text-foreground";
-  const errorStyle = "mt-1 text-xs text-red-400";
+  // function to check if selected date is available for the selected table
+  const checkAvailability = async (date, tableNumber) => {
+    const response = await fetch(`http://localhost:4000/reservations`);
+    const data = await response.json();
+
+    // filter bookings for the selected table
+    const tableBookings = data.filter((f) => f.tableNumber == tableNumber);
+    // check if any booking matches the selected date - if so, return false
+    const available =
+      tableBookings.find((f) => Date.parse(f.date) == date.getTime()) ==
+      undefined;
+
+    return available;
+  };
 
   // when form is submitted, handleSubmit calls onSubmit function
   const onSubmit = async (data) => {
     try {
       setSuccess(false);
-
       // Validate selected table
       if (!selectedTable) {
         setError("table", {
@@ -41,14 +55,15 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
 
       // Validate number of guests
       const guests = Number(data.guests);
+      const seats = tables.find((i) => i.id == selectedTable).type;
       if (!Number.isFinite(guests) || guests <= 0) {
         setError("guests", {
           message: "Please enter a valid number of guests",
         });
         return;
-      } else if (guests > 78) {
+      } else if (guests > seats) {
         setError("guests", {
-          message: "Our maximum capacity is 78 guests",
+          message: "Table only has room for " + seats + " guests",
         });
         return;
       }
@@ -63,16 +78,25 @@ const BookingReactForm = ({ selectedTable, onTableReset }) => {
       // Add a small delay to show the submitting state
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
+      const available = await checkAvailability(data.date, selectedTable);
       // push data to api
-      const response = await fetch("http://localhost:4000/reservations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookingData),
-      });
-      // If response is not successful - show error message
-      if (!response.ok) {
+      if (available) {
+        const response = await fetch("http://localhost:4000/reservations", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(bookingData),
+        });
+        // If response is not successful - show error message
+        if (!response.ok) {
+          setError("root", {
+            message: "Booking submission failed. Please try again.",
+          });
+          return;
+        }
+      } else {
         setError("root", {
-          message: "Booking submission failed. Please try again.",
+          message:
+            "Selected table is not available at the chosen time. Please select another table or time.",
         });
         return;
       }

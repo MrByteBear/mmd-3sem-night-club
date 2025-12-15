@@ -49,7 +49,7 @@ const FetchPosts = async () => {
                   : post.title}
               </h2>
               <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
-                BY: {post.author} / {commentCount} comments / 16 Nov 2018
+                BY: {post.author} / {commentCount} comments
               </p>
               {/* crops post.content for design purposes */}
               <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
