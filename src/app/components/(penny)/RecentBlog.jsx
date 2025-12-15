@@ -31,7 +31,7 @@ const FetchPosts = async () => {
 
       // render article
       return (
-        <article key={post.id} className="grid">
+        <article key={post.id} className="grid max-md:mb-12 md:mb-0">
           <Link href={`/blog-post/${post.id}`}>
             <Image
               src={post.asset.url}
