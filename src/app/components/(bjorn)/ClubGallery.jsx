@@ -1,4 +1,4 @@
-import DataFetcher from "@/app/components/(bjorn)/data-fetcher/DataFetcher";
+import DataFetcher from "@/app/components/(bjorn)/DataFetcher";
 import Image from "next/image";
 
 function GalleryView({ data, displayFull = false }) {

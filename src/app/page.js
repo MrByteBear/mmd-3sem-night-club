@@ -1,8 +1,8 @@
 // NextJS Components
 import Image from "next/image";
 // Components
-import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
-import SectionElem from "@/app/components/(bjorn)/section-elem/SectionElem";
+import HeaderNav from "@/app/components/(bjorn)/HeaderNav";
+import SectionElem from "@/app/components/(bjorn)/SectionElem";
 import SlidingGallery from "@/app/components/(bjorn)/sliding-gallery/SlidingGallery";
 import ClubGalleryAnimated from "./components/(meleese)/gallery/ClubGalleryAnimated";
 import MusicPlayer from "@/app/components/(bjorn)/music-player/MusicPlayer";
@@ -18,7 +18,7 @@ import IntroImg2 from "@/app/assets/content-img/reastaurant_1.jpg";
 import IntroImg3 from "@/app/assets/content-img/thumb2.jpg";
 import SliderBg from "@/app/assets/bg/slider_bg_overlay.png";
 import FooterBg from "@/app/assets/bg/footerbg.jpg";
-import HeroBanner from "./components/(bjorn)/hero-banner/HeroBanner";
+import HeroBanner from "@/app/components/(bjorn)/HeroBanner";
 
 export default function Home() {
   return (

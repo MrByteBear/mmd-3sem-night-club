@@ -1,4 +1,4 @@
-import DataFetcher from "@/app/components/(bjorn)/data-fetcher/DataFetcher";
+import DataFetcher from "@/app/components/(bjorn)/DataFetcher";
 import TestimonialsContent from "./TestimonialsContent";
 
 export default function TestimonialsSection() {

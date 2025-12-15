@@ -20,7 +20,7 @@ import {
   IoPlaySkipForward,
   IoPlaySkipBack,
 } from "react-icons/io5";
-import CornerElem from "../corner-elem/CornerElem";
+import CornerElem from "../CornerElem";
 
 export default function MusicPlayer() {
   const audioTracks = [

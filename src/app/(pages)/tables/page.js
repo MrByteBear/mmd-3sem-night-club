@@ -6,7 +6,7 @@ import BookingForm from "@/app/components/(penny)/BookingReactForm";
 // import BookingForm from "@/app/components/(Meleese)/BookingForm";
 
 import SubHeader from "@/app/components/(meleese)/SubHeader";
-import HeaderNav from "@/app/components/(Bjorn)/header-elem/HeaderNav";
+import HeaderNav from "@/app/components/(bjorn)/HeaderNav";
 
 const TABLES = [
   { id: 1, type: 1 },

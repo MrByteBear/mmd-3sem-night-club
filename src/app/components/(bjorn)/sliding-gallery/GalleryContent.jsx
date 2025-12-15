@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
-import ImageHover from "../image-hover-container/ImageHover";
+import ImageHover from "../ImageHover";
 
 // Since the date part of the json object is formatted as one long string that consists of both
 // the full date and the full time, the Date JS object will instead be used to separate

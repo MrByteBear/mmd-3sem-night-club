@@ -1,5 +1,5 @@
 import SubHeader from "@/app/components/(meleese)/SubHeader";
-import HeaderNav from "@/app/components/(Bjorn)/header-elem/HeaderNav";
+import HeaderNav from "@/app/components/(bjorn)/HeaderNav";
 import ContactReactForm from "@/app/components/(penny)/ContactReactForm";
 
 export default function Contact() {

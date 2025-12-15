@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CornerElem from "../corner-elem/CornerElem";
+import CornerElem from "./CornerElem";
 
 /*
 

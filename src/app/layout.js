@@ -1,6 +1,6 @@
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
-import FooterBox from "./components/(Bjorn)/footer-elem/FooterBox";
+import FooterBox from "@/app/components/(bjorn)/FooterBox";
 
 const ubuntuSans = Ubuntu({
   variable: "--font-ubuntu-sans",

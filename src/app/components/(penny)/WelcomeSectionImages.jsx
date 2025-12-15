@@ -1,7 +1,7 @@
 // this component is used in the WelcomeSection on the homepage
 
 // component imports
-import CornerElem from "../(bjorn)/corner-elem/CornerElem";
+import CornerElem from "../(bjorn)/CornerElem";
 import LogoGuy from "@/app/assets/icon/logoGuy.svg";
 
 // icon imports

@@ -1,6 +1,6 @@
 import BlogList from "@/app/components/(penny)/BlogList";
 import patternBg from "@/app/assets/bg/pattern_bg.jpg";
-import HeaderNav from "@/app/components/(bjorn)/header-elem/HeaderNav";
+import HeaderNav from "@/app/components/(bjorn)/HeaderNav";
 import SubHeader from "@/app/components/(meleese)/SubHeader";
 import { Suspense } from "react";
 

@@ -1,5 +1,5 @@
 "use client";
-import ImageHover from "@/app/components/(bjorn)/image-hover-container/ImageHover";
+import ImageHover from "@/app/components/(bjorn)/ImageHover";
 import { useState, useRef } from "react";
 import { LuTwitter, LuFacebook } from "react-icons/lu";
 import { IoLogoSnapchat } from "react-icons/io5";
