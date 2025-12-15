@@ -91,18 +91,18 @@ const FooterBox = () => {
               Stay Connected With Us{" "}
             </p>
             <ul className="flex gap-x-6 max-lg:justify-between max-lg:gap-x-0">
-              <li className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
-                <a href="https://facebook.com" target="_blank">
+              <li>
+                <a href="https://facebook.com" target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
                   <LuFacebook className="h-6 w-6" />
                 </a>
               </li>
-              <li className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
-                <a href="https://snapchat.com" target="_blank">
+              <li>
+                <a href="https://snapchat.com" target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
                   <IoLogoSnapchat className="h-6 w-6" />
                 </a>
               </li>
-              <li className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
-                <a href="https://instagram.com" target="_blank">
+              <li>
+                <a href="https://instagram.com" target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
                   <LuInstagram className="h-6 w-6" />
                 </a>
               </li>

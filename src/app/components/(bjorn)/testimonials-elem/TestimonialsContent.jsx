@@ -1,29 +1,10 @@
 "use client";
+import ImageHover from "@/app/components/(bjorn)/image-hover-container/ImageHover";
 import { useState, useRef } from "react";
-import Link from "next/link";
-import ImageHover from "../image-hover-container/ImageHover";
+import { LuTwitter, LuFacebook } from "react-icons/lu";
+import { IoLogoSnapchat } from "react-icons/io5";
 
-// Since the date part of the json object is formatted as one long string that consists of both
-// the full date and the full time, the Date JS object will instead be used to separate
-// - the Date part and the Time part to what it should correspond to in the provided Design File
-function formatDate(string) {
-  const date = new Date(string);
-
-  const dateFormatted = date.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-
-  const timeFormatted = date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-
-  return { date: dateFormatted, time: timeFormatted };
-}
-
-export default function GalleryContent({ data }) {
+export default function TestimonialsContent({ data }) {
   // Used for tracking which card is currently in view (by index in the data array)
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -96,21 +77,9 @@ export default function GalleryContent({ data }) {
     }
   };
 
-  // Bool check for if desktop button should be highlighted.
-  // For desktop, 2 cards will be shown per set, each button will therefore control 2 indices of the array.
-  const isDesktopActive = (btnIndex) => {
-    // Updates the btnIndex by multiplying the value by 2.
-    // startIndex points to the val of btnIndex * 2, per how the btns should control the indices.
-    const startIndex = btnIndex * 2;
-    // Button will be colored if currentIndex matches either of the two displayed cards.
-    // This is to make sure the coloring will persist, even if we were to scroll by one when
-    // - scrolling manually.
-    return currentIndex === startIndex || currentIndex === startIndex + 1;
-  };
-
-  // Bool check for if a mobile btn should be highlighted.
-  // Since mobile shows 1 card at a time, btnIndex and card index will be mapped directly.
-  const isMobileActive = (btnIndex) => {
+  // Bool check for if the btn should be highlighted.
+  // BtnIndex and card index will be mapped directly
+  const isBtnActive = (btnIndex) => {
     return currentIndex === btnIndex;
   };
 
@@ -127,45 +96,38 @@ export default function GalleryContent({ data }) {
         >
           {/* Desktop Mapping */}
           {data.map((item, index) => {
-            const { date, time } = formatDate(item.date);
             return (
               <div
                 key={index}
-                className="min-w-[350px] flex-[0_0_calc(50%-1rem)] snap-start max-lg:max-w-full max-md:flex-[0_0_100%]"
+                className="flex-[0_0_100%] snap-start gap-y-8 my-4 grid place-items-center place-content-center"
               >
                 <ImageHover
                   imgSrc={item?.asset?.url}
-                  imgAlt={item?.title}
-                  imgWidth={570}
-                  imgHeight={403}
-                  imgClass="w-full"
-                  topChildren={
-                    <Link
-                      href="#"
-                      className="tracking-2pct bg-accent cursor-pointer rounded-sm px-6 py-3 font-medium capitalize"
-                    >
-                      Book now
-                    </Link>
-                  }
-                  bottomChildren={
-                    <>
-                      <span className="tracking-2pct place-self-start text-lg font-medium capitalize">
-                        {item?.title}
-                      </span>
-                      <span className="tracking-2pct text-base font-light mt-2">
-                        {item.description.split(".").slice(0, 4).join(". ") +
-                          "."}
-                      </span>
-                    </>
-                  }
-                  topCSS={"hoverToBottom"}
-                  bottomCSS={"hoverToTop"}
+                  imgAlt={item?.name}
+                  imgWidth={210}
+                  imgHeight={210}
                 />
-                <div className="bg-accent flex gap-x-4 px-6 py-2 *:text-xl *:font-medium max-lg:*:text-base">
-                  <p>{date}</p>
-                  <p>{time}</p>
-                  <p>{item?.location}</p>
+                <div className="font-medium text-center">
+                  <p className="text-2xl tracking-7pct ">{item?.name}</p>
+                  <p className="text-lg mt-8 max-w-[107ch]">{item?.content}</p>
                 </div>
+                  <ul className="flex gap-x-6 max-lg:justify-between max-lg:gap-x-0">
+                    <li>
+                      <a href={item?.facebook} target="_blank" className="grid place-content-center w-12 aspect-square outline-foreground outline-2 outline-solid">
+                        <LuFacebook className="h-6 w-6" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href={item?.twitter} target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
+                        <LuTwitter className="h-6 w-6" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://snapchat.com" target="_blank" className="outline-foreground grid aspect-square w-12 place-content-center outline-2 outline-solid">
+                        <IoLogoSnapchat className="h-6 w-6" />
+                      </a>
+                    </li>
+                  </ul>
               </div>
             );
           })}
@@ -174,33 +136,17 @@ export default function GalleryContent({ data }) {
 
       {/* Navigation Buttons */}
       <div className="flex gap-4">
-        <div className="flex gap-4 max-md:hidden">
-          {[0, 1, 2].map((btnIndex) => (
-            <button
-              key={btnIndex}
-              type="button"
-              onClick={() => goToSlide(btnIndex * 2)}
-              className={`h-5 w-5 transition-colors ${
-                isDesktopActive(btnIndex) ? "bg-accent" : "bg-foreground"
-              }`}
-              aria-label={`Go to slide ${btnIndex + 1}`}
-            />
-          ))}
-        </div>
-
-        <div className="flex gap-4 md:hidden">
-          {data.slice(0, 6).map((_, btnIndex) => (
-            <button
-              key={btnIndex}
-              type="button"
-              onClick={() => goToSlide(btnIndex)}
-              className={`h-5 w-5 transition-colors ${
-                isMobileActive(btnIndex) ? "bg-accent" : "bg-foreground"
-              }`}
-              aria-label={`Go to slide ${btnIndex + 1}`}
-            />
-          ))}
-        </div>
+        {[0, 1, 2].map((btnIndex) => (
+          <button
+            key={btnIndex}
+            type="button"
+            onClick={() => goToSlide(btnIndex)}
+            className={`h-5 w-5 transition-colors ${
+              isBtnActive(btnIndex) ? "bg-accent" : "bg-foreground"
+            }`}
+            aria-label={`Go to slide ${btnIndex + 1}`}
+          />
+        ))}
       </div>
     </div>
   );

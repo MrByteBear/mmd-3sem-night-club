@@ -22,15 +22,17 @@ export default function SectionElem({
           : undefined
       }
     >
-      <div className="relative mb-16 max-md:text-center">
-        <h1 className="tracking-7pct pb-4 text-4xl font-medium uppercase max-md:text-3xl">
-          {title}
-        </h1>
-        <span
-          className="bottomLine-l absolute -bottom-3 left-1/2 -translate-x-1/2"
-          aria-hidden="true"
-        />
-      </div>
+      {title ? (
+        <div className="relative mb-16 max-md:text-center">
+          <h1 className="tracking-7pct pb-4 text-4xl font-medium uppercase max-md:text-3xl">
+            {title}
+          </h1>
+          <span
+            className="bottomLine-l absolute -bottom-3 left-1/2 -translate-x-1/2"
+            aria-hidden="true"
+          />
+        </div>
+      ) : null}
       {children}
     </section>
   );

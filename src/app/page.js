@@ -13,6 +13,7 @@ import Subscribe from "./components/(Meleese)/Subscribe";
 import WelcomeSectionImages from "./components/(penny)/WelcomeSectionImages";
 import RecentBlog from "./components/(penny)/RecentBlog";
 import SubscribeReactForm from "./components/(penny)/SubscribeReactForm";
+import TestimonialsElem from "@/app/components/(bjorn)/testimonials-elem/TestimonialsElem";
 // Asset Imports
 import MainBg from "@/app/assets/bg/pattern_bg.jpg";
 import IntroImg1 from "@/app/assets/content-img/thumb1.jpg";
@@ -74,6 +75,9 @@ export default function Home() {
         </SectionElem>
         <SectionElem title="Latest Videos">
           <VideoPlayer />
+        </SectionElem>
+        <SectionElem variant="breakoutAlt" className="my-12">
+          <TestimonialsElem />
         </SectionElem>
         <SectionElem title="Recent blog">
           <RecentBlog />
