@@ -41,6 +41,7 @@ export default function ImageHover({
   imgAlt,
   imgWidth,
   imgHeight,
+  imgClass,
   topChildren,
   bottomChildren,
   topCSS,
@@ -54,7 +55,7 @@ export default function ImageHover({
         width={imgWidth || 570}
         height={imgHeight || 403}
         unoptimized
-        className="w-full"
+        className={`${imgClass}`}
       />
       <div className="hoverChild group">
         <div className={`hoverChild absolute top-0 bottom-1/2 left-0 grid w-full place-items-center ${topCSS}`}>
