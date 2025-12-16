@@ -1,9 +1,14 @@
 "use client";
+// NextJS Components
+import { useState, useRef } from "react";
+import Image from "next/image";
+// NPM AudioPlayer package from: https://www.npmjs.com/package/react-h5-audio-player 
+import AudioPlayer, {RHAP_UI} from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 // Component Styling
 import playerStyle from "./MusicPlayerStyle.module.css";
-// NextJS Components
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
+// Other Components
+import ImageHover from "@/app/components/(bjorn)/ImageHover";
 // Images
 import track1 from "@/app/assets/content-img/track1.jpg";
 import track2 from "@/app/assets/content-img/track2.jpg";
@@ -17,6 +22,7 @@ import {
   IoPause,
   IoShuffle,
   IoVolumeHigh,
+  IoVolumeMute,
   IoPlaySkipForward,
   IoPlaySkipBack,
 } from "react-icons/io5";
@@ -42,107 +48,133 @@ export default function MusicPlayer() {
       image: track5,
     },
   ];
+   const [currentTrack, setCurrentTrack] = useState(0);
+   const [shuffle, setShuffle] = useState(false);
+   const [isPlaying, setIsPlaying] = useState(false);
+   const audioRef = useRef(null);
 
-  const [currentTrack, setCurrentTrack] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [shuffle, setShuffle] = useState(false);
+   const handleClickNext = () => {
+    if (shuffle) {
+      const randomIndex = Math.floor(Math.random() * audioTracks.length);
+      setCurrentTrack(randomIndex);
+    } else {
+      setCurrentTrack((prev) => (prev + 1) % audioTracks.length);
+    }
+  };
 
-  const audioRef = useRef(null);
+  const handleClickPrevious = () => {
+    setCurrentTrack((prev) => (prev - 1 + audioTracks.length) % audioTracks.length);
+  };
+
+  const handleTrackSelect = (index) => {
+    setCurrentTrack(index);
+  };
+
+  const toggleShuffle = () => {
+    setShuffle((prev) => !prev);
+  };
 
   return (
-    <div className="grid">
+    <div className="grid max-lg:grid-cols-subgrid">
       <div className="flex items-center gap-x-4">
         <Image
-          src="/media/madbars.gif"
-          alt="text"
+          src={audioTracks[currentTrack].image}
+          alt={audioTracks[currentTrack].title}
           width={232}
           height={192}
           className="max-lg:hidden"
         />
         <div className="flex-1">
-          <p>{audioTracks[currentTrack].title}</p>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            className={`${playerStyle.slider} mt-8 h-4 w-full cursor-pointer appearance-none`}
-          />
-          <div className="mt-4 grid grid-cols-3 items-center max-lg:mt-8 max-lg:grid-flow-row max-lg:grid-cols-none max-lg:justify-items-center max-lg:gap-y-8">
-            <span className="text-lg">0:00 / 03:38</span>
-            <div className="flex gap-x-4 justify-self-center">
-              <button type="button" className="cursor-pointer">
-                <IoPlaySkipBack className="size-8" />
-              </button>
+          <p className="mb-4 text-center text-2xl tracking-2pct max-lg:text-xl">{audioTracks[currentTrack].title}</p>
+          <AudioPlayer 
+            className={playerStyle.customPlayer}
+            ref={audioRef}
+            volume={0.5}
+            src={audioTracks[currentTrack].src}
+            showSkipControls
+            showJumpControls={false}
+            showDownloadProgress={false}
+            showFilledProgress={false}
+            autoPlayAfterSrcChange={true}
+            onClickNext={handleClickNext}
+            onClickPrevious={handleClickPrevious}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onEnded={handleClickNext}
+            customAdditionalControls={[
+              RHAP_UI.LOOP,
               <button
+                key="shuffle"
                 type="button"
-                className="border-foreground grid cursor-pointer place-items-center rounded-full border-4 border-solid p-1"
+                className="cursor-pointer"
+                aria-label="Toggle shuffle"
+                onClick={toggleShuffle}
               >
-                <IoCaretForward className="size-8" />
+                <IoShuffle className={`size-8 ${shuffle ? 'text-accent' : 'text-foreground'}`} />
               </button>
-              <button type="button" className="cursor-pointer">
-                <IoPlaySkipForward className="size-8" />
-              </button>
-              <button type="button" className="cursor-pointer">
-                <IoShuffle className="size-8" />
-              </button>
-            </div>
-            <div className="flex items-center gap-x-4 justify-self-end">
-              <IoVolumeHigh className="size-8" />
-              <input
-                type="range"
-                min="0"
-                max="100"
-                className={`${playerStyle.slider} h-4 w-40 cursor-pointer appearance-none`}
-              />
-            </div>
-          </div>
+            ]}
+            customIcons={{
+              play: <IoCaretForward className="size-8 text-foreground"/>,
+              pause: <IoPause className="size-8 text-foreground"/>,
+              previous: <IoPlaySkipBack className="size-8 text-foreground" />,
+              next: <IoPlaySkipForward className="size-8 text-foreground" />,
+              volume: <IoVolumeHigh className="size-8 text-foreground" />,
+              volumeMute: <IoVolumeMute className="size-8 text-foreground" />,
+            }}
+          />
         </div>
-
-        <audio ref={audioRef} src={audioTracks[currentTrack].src} />
       </div>
       <div className="flex cursor-pointer max-lg:hidden">
-        {audioTracks.map((img) => (
-          <div key={img.title} className="relative">
-            <CornerElem topLeft={true} className="w-15" />
-            <div className="grid place-items-center *:[grid-area:1/1]">
-              <Image src={img.image} alt={img.title} />
-              <div className="border-accent text-accent grid cursor-pointer place-items-center rounded-full border-4 border-solid p-1">
-                <IoCaretForward className="size-8" />
-              </div>
+        {audioTracks.map((img, index) => (
+          <div key={img.title} className="relative" onClick={() => handleTrackSelect(index)}>
+            <ImageHover 
+              imgSrc={img.image}
+              imgAlt={img.alt}
+              topChildren={
+              <div className="self-end border-accent text-accent grid cursor-pointer place-items-center rounded-full border-4 border-solid p-1">
+                  <IoCaretForward className="size-8" />
+                </div>}
+              bottomChildren={
               <span className="tracking-2pct bg-background w-full self-end py-3 text-center text-lg font-medium">
                 {img.title}
               </span>
+              }
+              topCSS={index === currentTrack ? "opacity-100 visible" : ""}
+              bottomCSS={index === currentTrack ? "opacity-100 visible" : ""}
+            />
             </div>
-            <CornerElem bottomRight={true} className="w-15" />
-          </div>
         ))}
       </div>
       <div className="hidden max-lg:cursor-pointer max-lg:mt-8 max-lg:grid max-lg:place-items-center max-lg:gap-y-8">
-        <div className="relative">
-          <CornerElem topLeft={true} className="w-15" />
-          <div className="grid place-items-center *:[grid-area:1/1]">
-            <Image src={audioTracks[1].image} alt={audioTracks[1].title} />
-            <div className="border-accent text-accent grid cursor-pointer place-self-center rounded-full border-4 border-solid p-1">
-              <IoCaretForward className="size-8" />
-            </div>
-            <span className="tracking-2pct bg-background w-full self-end py-3 text-center text-lg font-medium">
-              {audioTracks[1].title}
-            </span>
-          </div>
-          <CornerElem bottomRight={true} className="w-15" />
+        <div className="relative w-full">
+          <ImageHover 
+            imgSrc={audioTracks[currentTrack].image}
+            imgAlt={audioTracks[currentTrack].title}
+            imgWidth={399}
+            imgHeight={264}
+            imgClass="w-full"
+            topChildren={
+              <div className="self-end border-accent text-accent grid cursor-pointer place-items-center rounded-full border-4 border-solid p-1">
+                  <IoCaretForward className="size-8" />
+                </div>}
+              bottomChildren={
+              <span className="tracking-2pct bg-background w-full self-end py-3 text-center text-lg font-medium">
+                {audioTracks[currentTrack].title}
+              </span>
+              }
+            />
         </div>
         <div className="flex gap-x-3">
           <button
             type="button"
+            onClick={handleClickPrevious}
             className="border-foreground hover:text-background hover:bg-foreground grid place-items-center border-2 border-solid p-3"
           >
             <IoCaretBack className="size-8" />
           </button>
           <button
             type="button"
+            onClick={handleClickNext}
             className="border-foreground hover:text-background hover:bg-foreground grid place-items-center border-2 border-solid p-3"
           >
             <IoCaretForward className="size-8" />

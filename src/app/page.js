@@ -67,7 +67,7 @@ export default function Home() {
           {/* <ClubGallery displayFull={true}/> */}
           <ClubGalleryAnimated />
         </SectionElem>
-        <SectionElem title="Night club track" className="my-12">
+        <SectionElem title="Night club track" className="my-12 max-lg:place-content-center">
           <MusicPlayer />
         </SectionElem>
         <SectionElem title="Latest Videos">
