@@ -1,4 +1,4 @@
-// this component fetches and displays comments for a specific blog post
+//this component is called on the blog post page (singleview) to fetch and display comments for a specific blog post
 
 // react imports
 import { Suspense } from "react";
