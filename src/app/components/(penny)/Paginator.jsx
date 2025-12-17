@@ -1,4 +1,7 @@
+// this component is called by the blog list component to display pagination buttons
+
 "use client";
+
 // Next imports
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -37,6 +40,7 @@ export default function Paginator({ totalPages }) {
         <button
           onClick={() => handleClick(currentPage + 1)}
           disabled={currentPage >= totalPages}
+          // disable button if on last page
           className={`cursor-pointer ${currentPage >= totalPages ? "cursor-not-allowed opacity-50" : ""}`}
         >
           Next &gt;

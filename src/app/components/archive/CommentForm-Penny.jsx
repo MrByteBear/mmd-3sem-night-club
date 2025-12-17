@@ -47,8 +47,6 @@ const CommentForm = ({ id }) => {
     };
 
     try {
-      console.log("Posting comment for blog post ID:", id);
-
       const response = await fetch(
         "http://localhost:4000/comments?content-Type=application/json",
         {

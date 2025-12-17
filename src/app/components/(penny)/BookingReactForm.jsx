@@ -1,9 +1,12 @@
 // this is a rewrite of BookingForm.jsx using react-hook-form library
+
+// this component is called by the booking page to display a booking form with validation
 "use client";
 
 // React imports
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+
 // Component imports
 import DatePicker from "@/app/components/(penny)/ReactDatePicker";
 import SubmitButton from "@/app/components/(meleese)/buttons/Submit";

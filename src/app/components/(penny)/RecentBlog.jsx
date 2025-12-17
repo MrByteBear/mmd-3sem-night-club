@@ -1,5 +1,10 @@
+// this component is called by the homepage to display the 3 most recent blog posts
+
+// next components
 import Link from "next/link";
 import Image from "next/image";
+
+// react imports
 import { Suspense } from "react";
 
 const RecentBlog = () => {
@@ -27,6 +32,7 @@ const FetchPosts = async () => {
         `http://localhost:4000/comments?blogpostId=${post.id}`,
       );
       const comments = await commentsResponse.json();
+      // if comments is an array, get its length, otherwise set to 0
       const commentCount = Array.isArray(comments) ? comments.length : 0;
 
       // render article

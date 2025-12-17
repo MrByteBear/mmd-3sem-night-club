@@ -1,3 +1,6 @@
+//this component is called on the blog post page (singleview) to fetch and display comments for a specific blog post
+
+// react imports
 import { Suspense } from "react";
 
 const BlogPostComments = ({ id, commentCount }) => {

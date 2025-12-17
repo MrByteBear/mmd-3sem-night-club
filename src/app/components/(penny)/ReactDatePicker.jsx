@@ -1,12 +1,16 @@
 // this is a rework of the DatePicker component to make it work with react-hook-form
+
+// this component is used in the BookingReactForm component to select a date for booking
 "use client";
 
 // React imports
-import { forwardRef } from "react";
+import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+
+// icon imports
+import { forwardRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { format } from "date-fns";
-import "react-datepicker/dist/react-datepicker.css";
 
 // Use the DatePicker library to use in our BookingForm component
 const DateInput = forwardRef(function DateInput(

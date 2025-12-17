@@ -1,5 +1,10 @@
+// this is a rework of the SubscribeForm component to make it work with react-hook-form
+
+// this component is used in the frontpage to subscribe to the newsletter
+
 "use client";
 
+// react imports
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 

@@ -1,11 +1,14 @@
+// react imports
 import Image from "next/image";
+import React from "react";
+// component imports
 import BlogPostComments from "@/app/components/(penny)/BlogPostComments";
 import patternBg from "@/app/assets/bg/pattern_bg.jpg";
-import React from "react";
 import CommentForm from "@/app/components/(penny)/CommentReactForm";
 import HeaderNav from "@/app/components/(bjorn)/HeaderNav";
 import SubHeader from "@/app/components/(meleese)/SubHeader";
 
+// blog post page fetches and displays a single blog post based on the id parameter
 const BlogPost = async ({ params }) => {
   const { id } = await params;
   const response = await fetch(`http://localhost:4000/blogposts/${id}`);
@@ -16,6 +19,7 @@ const BlogPost = async ({ params }) => {
     `http://localhost:4000/comments?blogpostId=${id}`,
   );
   const comments = await commentsResponse.json();
+  // Determine comment count, if comments is an array - otherwise 0
   const commentCount = Array.isArray(comments) ? comments.length : 0;
 
   return (
@@ -45,6 +49,7 @@ const BlogPost = async ({ params }) => {
             {post.content}
           </p>
 
+          {/* display comments and comment form */}
           <BlogPostComments id={id} commentCount={commentCount} />
           <CommentForm id={id} />
         </div>
