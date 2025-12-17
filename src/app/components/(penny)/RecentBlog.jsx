@@ -57,9 +57,8 @@ const FetchPosts = async () => {
               <p className="text-accent mt-4 font-medium tracking-[0.36px] uppercase">
                 BY: {post.author} / {commentCount} comments
               </p>
-              {/* crops post.content for design purposes */}
-              <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
-                {post.content.substring(0, 125)}
+              <p className="mt-4 line-clamp-3 overflow-hidden text-[16px] leading-6 font-medium tracking-[0.32px]">
+                {post.content}
               </p>
             </div>
           </Link>
