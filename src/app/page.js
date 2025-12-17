@@ -85,7 +85,6 @@ export default function Home() {
         </SectionElem>
         <SubscribeReactForm />
       </main>
-      {/* <FooterBox /> */}
     </>
   );
 }
