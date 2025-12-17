@@ -3,6 +3,7 @@
 // import next components
 import Link from "next/link";
 import Image from "next/image";
+
 // component imports
 import Paginator from "./Paginator";
 import ReadMore from "@/app/components/(meleese)/buttons/ReadMore";

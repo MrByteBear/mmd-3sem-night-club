@@ -8,7 +8,10 @@ import LogoGuy from "@/app/assets/icon/logoGuy.svg";
 import { LuMartini } from "react-icons/lu";
 import { PiBowlFood } from "react-icons/pi";
 
+// next imports
 import Image from "next/image";
+
+
 // recieves header, text and children as props
 const WelcomeSectionImages = ({ header, text, children, variant }) => {
   const renderIcon = () => {

@@ -1,7 +1,14 @@
+// this component is a rewrite of ContactForm.jsx using react-hook-form library
+
+// this component is called by the contact page to display a contact form with validation
+
 "use client";
 
+// react imports
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+
+// component imports
 import SubmitButton from "@/app/components/(meleese)/buttons/Submit";
 
 const ContactReactForm = () => {

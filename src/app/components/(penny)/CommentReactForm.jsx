@@ -1,3 +1,4 @@
+// this component is called by the blog post page to display a comment form and handle comment submissions
 "use client";
 
 // react imports
@@ -33,6 +34,7 @@ const CommentReactForm = ({ id }) => {
       // Add a small delay to show the submitting state
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
+    
       const commentData = {
         name: data.name,
         email: data.email,
