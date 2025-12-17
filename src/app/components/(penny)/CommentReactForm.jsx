@@ -34,7 +34,6 @@ const CommentReactForm = ({ id }) => {
       // Add a small delay to show the submitting state
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    
       const commentData = {
         name: data.name,
         email: data.email,
@@ -148,7 +147,7 @@ const CommentReactForm = ({ id }) => {
           {/* Success message */}
           {success && (
             <p className="mt-3 text-sm text-green-400">
-              Your comment has been submitted! 🎉
+              Your comment has been submitted!
             </p>
           )}
 
