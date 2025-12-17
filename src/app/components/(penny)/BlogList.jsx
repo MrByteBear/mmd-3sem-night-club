@@ -77,7 +77,7 @@ const FetchPosts = async ({ page }) => {
               <p className="text-accent mt-4 font-medium tracking-[0.36px]">
                 BY: {post.author} / {commentCount} comments
               </p>
-              <p className="mt-4 line-clamp-4 overflow-hidden text-[16px] leading-6 font-medium tracking-[0.32px]">
+              <p className="mt-4 line-clamp-6 overflow-hidden text-[16px] leading-6 font-medium tracking-[0.32px]">
                 {post.content}
               </p>
 
