@@ -77,9 +77,10 @@ const FetchPosts = async ({ page }) => {
               <p className="text-accent mt-4 font-medium tracking-[0.36px]">
                 BY: {post.author} / {commentCount} comments
               </p>
-              <p className="mt-4 text-[16px] leading-6 font-medium tracking-[0.32px]">
-                {post.content.substring(0, 450)}
+              <p className="mt-4 line-clamp-4 overflow-hidden text-[16px] leading-6 font-medium tracking-[0.32px]">
+                {post.content}
               </p>
+
               <div className="flex items-center justify-center pt-6 md:justify-end">
                 <Link href={`/blog-post/${post.id}`}>
                   <ReadMore />
