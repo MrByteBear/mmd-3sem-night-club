@@ -1,3 +1,6 @@
+// this component fetches and displays comments for a specific blog post
+
+// react imports
 import { Suspense } from "react";
 
 const BlogPostComments = ({ id, commentCount }) => {
