@@ -1,3 +1,5 @@
+// this component is called by the blog page to display a list of blog posts with pagination
+
 // import next components
 import Link from "next/link";
 import Image from "next/image";
