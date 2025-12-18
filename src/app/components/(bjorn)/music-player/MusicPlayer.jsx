@@ -1,6 +1,6 @@
 "use client";
 // NextJS Components
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 // NPM AudioPlayer package from: https://www.npmjs.com/package/react-h5-audio-player 
 import AudioPlayer, {RHAP_UI} from 'react-h5-audio-player';
@@ -26,7 +26,6 @@ import {
   IoPlaySkipForward,
   IoPlaySkipBack,
 } from "react-icons/io5";
-import CornerElem from "../CornerElem";
 
 export default function MusicPlayer() {
   const audioTracks = [
@@ -50,26 +49,33 @@ export default function MusicPlayer() {
   ];
    const [currentTrack, setCurrentTrack] = useState(0);
    const [shuffle, setShuffle] = useState(false);
-   const [isPlaying, setIsPlaying] = useState(false);
-   const audioRef = useRef(null);
 
+   // Handler for next track
    const handleClickNext = () => {
+    // If shuffle is true, will set current track based on a randomly generated index
     if (shuffle) {
       const randomIndex = Math.floor(Math.random() * audioTracks.length);
       setCurrentTrack(randomIndex);
     } else {
-      setCurrentTrack((prev) => (prev + 1) % audioTracks.length);
+      // Will loop back to the first track, thanks to the modulo operator part.
+      // Otherwise will add 1 to the track index, moving to the next track
+      setCurrentTrack((track) => (track + 1) % audioTracks.length);
     }
   };
 
+  // Similar to how we handle Next Track, this is for previous track.
+  // Here, we modify the boundary with (track - 1 + audioTracks.length) to ensure
+  // - no negative numbers
   const handleClickPrevious = () => {
-    setCurrentTrack((prev) => (prev - 1 + audioTracks.length) % audioTracks.length);
+    setCurrentTrack((track) => (track - 1 + audioTracks.length) % audioTracks.length);
   };
 
+  // Gallery Track picker, will set the currentTrack to the index of the song.
   const handleTrackSelect = (index) => {
     setCurrentTrack(index);
   };
 
+  // Shuffle function, handler for the toggling of true / false bool state.
   const toggleShuffle = () => {
     setShuffle((prev) => !prev);
   };
@@ -88,7 +94,6 @@ export default function MusicPlayer() {
           <p className="mb-4 text-center text-2xl tracking-2pct max-lg:text-xl">{audioTracks[currentTrack].title}</p>
           <AudioPlayer 
             className={playerStyle.customPlayer}
-            ref={audioRef}
             volume={0.5}
             src={audioTracks[currentTrack].src}
             showSkipControls
@@ -98,8 +103,6 @@ export default function MusicPlayer() {
             autoPlayAfterSrcChange={true}
             onClickNext={handleClickNext}
             onClickPrevious={handleClickPrevious}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
             onEnded={handleClickNext}
             customAdditionalControls={[
               RHAP_UI.LOOP,
