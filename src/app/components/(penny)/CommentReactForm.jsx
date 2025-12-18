@@ -18,7 +18,7 @@ const CommentReactForm = ({ id }) => {
     handleSubmit,
     setError,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm();
 
   // styling
