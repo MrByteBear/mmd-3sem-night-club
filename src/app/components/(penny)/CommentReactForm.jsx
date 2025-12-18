@@ -88,6 +88,13 @@ const CommentReactForm = ({ id }) => {
                 {...register("name", {
                   // if input is empty - show error message
                   required: "Name is required",
+                  validate: (value) => {
+                    // input cannot contain numbers - if it does show error message
+                    if (/\d/.test(value)) {
+                      return "Name cannot contain numbers";
+                    }
+                    return true;
+                  },
                 })}
                 className={`${baseInput} ${
                   errors.name ? "border-red-500" : "border-foreground"
